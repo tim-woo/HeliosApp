@@ -8,18 +8,21 @@
 
 #import "HeliosAppAppDelegate.h"
 
-#import "HeliosAppViewController.h"
+//#import "HeliosAppViewController.h"
+#import "SwitchViewController.h"
 
 @implementation HeliosAppAppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize switchViewController;
+//@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-     
-    self.window.rootViewController = self.viewController;
+    
+    //self.window.rootViewController = self.viewController;
+    [self.window addSubview:switchViewController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -66,7 +69,8 @@
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
+   // [_viewController release];
+    [switchViewController release];
     [super dealloc];
 }
 
