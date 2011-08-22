@@ -12,7 +12,7 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>icon-black.png</string>
+		<string>icon.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>Helios.${PRODUCT_NAME:rfc1034identifier}</string>

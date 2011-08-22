@@ -3,7 +3,7 @@
 //  HeliosApp
 //
 //  Created by Tim Woo on 8/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Helios Interactive. All rights reserved.
 //
 
 #import "MercedesViewController.h"
@@ -23,6 +23,8 @@
 
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"Mercedes ViewdidLoad");
+
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -81,7 +83,7 @@
     [moviePlayer release];
 
     //---play partial screen---
-    player.view.frame = CGRectMake(0, 64, 768, 433);
+    player.view.frame = CGRectMake(15, 79, 738, 415);
     [self.view addSubview:player.view];
     
     //---play movie---

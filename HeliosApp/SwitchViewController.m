@@ -3,7 +3,7 @@
 //  HeliosApp
 //
 //  Created by Tim Woo on 8/12/11.
-//  Copyright 2011 __Helios Interactive__. All rights reserved.
+//  Copyright 2011 Helios Interactive. All rights reserved.
 //
 
 #import "SwitchViewController.h"
@@ -22,27 +22,12 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    NSLog(@"Im in switchviewcontroller memory warning");
     // Release any cached data, images, etc that aren't in use.
     
     if (self.heliosAppViewController.view.superview == nil)
-    {
-        NSLog(@"Im in remove heliosviewcontroller");
-        NSLog(@"retain count 6 = %i",[heliosAppViewController retainCount]) ;
-
-        self.heliosAppViewController = nil;           // crashes program
-    }
+        self.heliosAppViewController = nil;  
     else
-    {
-        NSLog(@"Im in remove gridviewcontroller");
-        NSLog(@"retain count grid 1 = %i",[gridViewController retainCount]) ;
-
-		self.gridViewController = nil;
-        NSLog(@"retain count grid 2 = %i",[gridViewController retainCount]) ;
-
-    }
-     
-     
+        self.gridViewController = nil;
 }
 
 #pragma mark - View lifecycle
@@ -52,8 +37,9 @@
     HeliosAppViewController *helioController = [[HeliosAppViewController alloc]
                                                 initWithNibName:@"HeliosAppViewController" bundle:nil];
     self.heliosAppViewController = helioController;
-    [self.view insertSubview:heliosAppViewController.view atIndex:0];
+    [self.view insertSubview:helioController.view atIndex:0];
     [helioController release];
+    
     
     [super viewDidLoad];
 }
@@ -63,6 +49,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.heliosAppViewController = nil;
+    self.gridViewController = nil;
+    self.segmentedControl = nil;
 }
 
 - (void)dealloc
@@ -110,8 +99,9 @@
         [gridViewController viewWillAppear:YES];
         [heliosAppViewController viewWillDisappear:YES];
 		
-        [heliosAppViewController.view removeFromSuperview];
+        [heliosAppViewController.view removeFromSuperview];        
         [self.view insertSubview:gridViewController.view atIndex:0];
+        
         [heliosAppViewController viewDidDisappear:YES];
         [gridViewController viewDidAppear:YES];
     }

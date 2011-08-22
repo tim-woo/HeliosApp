@@ -3,7 +3,7 @@
 //  HeliosApp
 //
 //  Created by Tim Woo on 8/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Helios Interactive. All rights reserved.
 //
 
 #import "HeliosAppAppDelegate.h"

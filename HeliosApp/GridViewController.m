@@ -3,17 +3,19 @@
 //  HeliosApp
 //
 //  Created by Tim Woo on 8/12/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Helios Interactive. All rights reserved.
 //
+
+// All projects must be named in the format p%i.png and p%iH.png
+// kGridRows must be updated to correct number of projects
 
 #import "GridViewController.h"
 #import "NickViewController.h"
 #import "MercedesViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
+
 static NSUInteger kGridRows = 5;
-
-
 
 @interface GridViewController (PrivateMethods)
 
@@ -23,29 +25,14 @@ static NSUInteger kGridRows = 5;
 @implementation GridViewController
 @synthesize nickViewController, scrollView, mercedesViewController;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    
-    return self;
-}
-
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"Grid Memory warning");
+
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
-    /*
-    if (self.nickViewController != nil && self.nickViewController.view.hidden == YES)
-    {
-        NSLog(@"In did recieve memory warning");
-        //[self.nickViewController.view removeFromSuperview];
-        //self.nickViewController = nil;
-    }*/
 }
 
 #pragma mark - View lifecycle
@@ -55,51 +42,23 @@ static NSUInteger kGridRows = 5;
     currentProject = none;
     
     scrollView.contentSize = CGSizeMake(768, kGridRows*312);
+    
+    // Add the projects to the scrollview.
+    
+    for (int i=1;i<=kGridRows;i++)
+    {
+        NSString *image = [[NSString alloc] initWithFormat:@"p%i.png",i];
+        NSString *imageHighlighted = [[NSString alloc] initWithFormat:@"p%iH.png",i];
 
-    // row 1
-    UIButton *tileNick = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 768, 312)];
-    [tileNick setImage:[UIImage imageNamed:@"projectNick.png"] forState:UIControlStateNormal];
-    [tileNick setImage:[UIImage imageNamed:@"projectNick.png"] forState:UIControlStateHighlighted];
-    tileNick.tag = 1; 
-    [tileNick addTarget:self action:@selector(pushProjectView:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:tileNick];
-    [tileNick release];
+        UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake(0, (i-1)*312, 768, 312)];
+        [projectButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+        [projectButton setImage:[UIImage imageNamed:imageHighlighted] forState:UIControlStateHighlighted];
+        projectButton.tag = i; 
+        [projectButton addTarget:self action:@selector(pushProjectView:) forControlEvents:UIControlEventTouchUpInside];
+        [scrollView addSubview:projectButton];
+        [projectButton release];
+    }
     
-    // row 2
-    UIButton *tileEmpty = [[UIButton alloc] initWithFrame:CGRectMake(0, 312, 768, 312)];
-    [tileEmpty setImage:[UIImage imageNamed:@"project2.png"] forState:UIControlStateNormal];
-    [tileEmpty setImage:[UIImage imageNamed:@"project2.png"] forState:UIControlStateHighlighted];
-    tileEmpty.tag = 2; 
-    [tileEmpty addTarget:self action:@selector(pushProjectView:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:tileEmpty];
-    [tileEmpty release];
-    
-    // row 3
-    UIButton *tileEmpty3 = [[UIButton alloc] initWithFrame:CGRectMake(0, 2*312, 768, 312)];
-    [tileEmpty3 setImage:[UIImage imageNamed:@"project3.png"] forState:UIControlStateNormal];
-    [tileEmpty3 setImage:[UIImage imageNamed:@"project3.png"] forState:UIControlStateHighlighted];
-    tileEmpty3.tag = 1; 
-    [tileEmpty3 addTarget:self action:@selector(pushProjectView:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:tileEmpty3];
-    [tileEmpty3 release];
-    
-    // row 4
-    UIButton *tileEmpty5 = [[UIButton alloc] initWithFrame:CGRectMake(0, 3*312, 768, 312)];
-    [tileEmpty5 setImage:[UIImage imageNamed:@"project4.png"] forState:UIControlStateNormal];
-    [tileEmpty5 setImage:[UIImage imageNamed:@"project4.png"] forState:UIControlStateHighlighted];
-    tileEmpty5.tag = 1; 
-    [tileEmpty5 addTarget:self action:@selector(pushProjectView:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:tileEmpty5];
-    [tileEmpty5 release];
-    
-    // row 5
-    UIButton *tileEmpty6 = [[UIButton alloc] initWithFrame:CGRectMake(0, 4*312, 768, 312)];
-    [tileEmpty6 setImage:[UIImage imageNamed:@"projectIntel.png"] forState:UIControlStateNormal];
-    [tileEmpty6 setImage:[UIImage imageNamed:@"projectIntel.png"] forState:UIControlStateHighlighted];
-    tileEmpty6.tag = 1; 
-    [tileEmpty6 addTarget:self action:@selector(pushProjectView:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:tileEmpty6];
-    [tileEmpty6 release];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -169,8 +128,8 @@ static NSUInteger kGridRows = 5;
 - (void)pushProjectView:(id)sender
 {    
     CATransition *transition = [CATransition animation];
-    transition.duration = .50;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.duration = .30;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromRight;
     transition.delegate = self;
@@ -178,47 +137,69 @@ static NSUInteger kGridRows = 5;
 
     UIButton *button = (UIButton *)sender;
 
-    if (button.tag == 1)
+    switch (button.tag) 
     {
-       self.mercedesViewController = nil;
-
-        if (self.nickViewController == nil)
-        {
-            NickViewController *nickController = [[NickViewController alloc] initWithNibName:@"NickViewController" bundle:nil];
-            nickController.gridController = self;
-            self.nickViewController = nickController;
-            [nickController release];
-        }
-        [self viewWillDisappear:YES];
-        [nickViewController viewWillAppear:YES];
-
-        [self.view addSubview:nickViewController.view];
-    
-        [self viewDidDisappear:YES];
-        [nickViewController viewDidAppear:YES];
-        
-        currentProject = nick;
-    }
-    else if (button.tag == 2)
-    {
-       self.nickViewController = nil;
-
-        if (self.mercedesViewController == nil)
-        {
-            MercedesViewController *mercedes = [[MercedesViewController alloc] initWithNibName:@"MercedesViewController" bundle:nil];
-            mercedes.gridController = self;
-            self.mercedesViewController = mercedes;
-            [mercedes release];
-        }
-        [self viewWillDisappear:YES];
-        [mercedesViewController viewWillAppear:YES];
-        
-        [self.view addSubview:mercedesViewController.view];
-        
-        [self viewDidDisappear:YES];
-        [mercedesViewController viewDidAppear:YES];
-        
-        currentProject = mercedes;
+        case 1:
+            self.mercedesViewController = nil;
+            
+            if (self.nickViewController == nil)
+            {
+                NickViewController *nickController = [[NickViewController alloc] initWithNibName:@"NickViewController" bundle:nil];
+                nickController.gridController = self;
+                self.nickViewController = nickController;
+                [nickController release];
+            }
+            [self viewWillDisappear:YES];
+            [nickViewController viewWillAppear:YES];
+            
+            [self.view addSubview:nickViewController.view];
+            
+            [self viewDidDisappear:YES];
+            [nickViewController viewDidAppear:YES];
+            
+            currentProject = nick;
+            break;
+            
+        case 2:
+            self.nickViewController = nil;
+            
+            if (self.mercedesViewController == nil)
+            {
+                MercedesViewController *mercedes = [[MercedesViewController alloc] initWithNibName:@"MercedesViewController" bundle:nil];
+                mercedes.gridController = self;
+                self.mercedesViewController = mercedes;
+                [mercedes release];
+            }
+            [self viewWillDisappear:YES];
+            [mercedesViewController viewWillAppear:YES];
+            
+            [self.view addSubview:mercedesViewController.view];
+            
+            [self viewDidDisappear:YES];
+            [mercedesViewController viewDidAppear:YES];
+            
+            currentProject = mercedes;
+            break;
+            
+        default:
+            
+            if (self.mercedesViewController == nil)
+            {
+                MercedesViewController *mercedes = [[MercedesViewController alloc] initWithNibName:@"MercedesViewController" bundle:nil];
+                mercedes.gridController = self;
+                self.mercedesViewController = mercedes;
+                [mercedes release];
+            }
+            [self viewWillDisappear:YES];
+            [mercedesViewController viewWillAppear:YES];
+            
+            [self.view addSubview:mercedesViewController.view];
+            
+            [self viewDidDisappear:YES];
+            [mercedesViewController viewDidAppear:YES];
+            
+            currentProject = mercedes;
+            break;
     }
 }
 
