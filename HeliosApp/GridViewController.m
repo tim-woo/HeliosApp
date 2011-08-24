@@ -47,8 +47,8 @@ static NSUInteger kGridRows = 5;
     
     for (int i=1;i<=kGridRows;i++)
     {
-        NSString *image = [[NSString alloc] initWithFormat:@"p%i.png",i];
-        NSString *imageHighlighted = [[NSString alloc] initWithFormat:@"p%iH.png",i];
+        NSString *image = [NSString stringWithFormat:@"p%i.png",i];
+        NSString *imageHighlighted = [NSString stringWithFormat:@"p%iH.png",i];
 
         UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake(0, (i-1)*312, 768, 312)];
         [projectButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
