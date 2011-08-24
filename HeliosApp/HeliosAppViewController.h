@@ -15,12 +15,10 @@
 #define kSwitchesSegmentProjects   2
 #define kSwitchesSegmentContact    3
 
-
 @interface HeliosAppViewController : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate>
-{
+{    
     CLLocationManager *locationManager;
     CLLocation        *startingPoint;
-
     
     BOOL pageControlUsed;
     UISegmentedControl *segmentedControl;
@@ -47,13 +45,12 @@
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) UIScrollView *parentScrollView;
 
+@property (nonatomic, retain) UIScrollView *parentScrollView;
 @property (nonatomic, retain) UIScrollView *childScrollViewOne;
 @property (nonatomic, retain) UIScrollView *childScrollViewTwo;
 @property (nonatomic, retain) UIScrollView *childScrollViewThree;
 @property (nonatomic, retain) UIScrollView *childScrollViewFour;
-
 @property (nonatomic, retain) UIScrollView *projectsNavScrollView;
 
 
@@ -77,6 +74,5 @@
 
 - (IBAction)toggleSwitch:(id) sender;
 //- (IBAction)nextTransition:(id)sender;
--(void)goToMiniApp:(id)sender;
--(void)getDirections:(id)sender;
+
 @end

@@ -8,30 +8,44 @@
 
 #import "HeliosAppViewController.h"
 #import "MapViewAnnotation.h"
-#import <QuartzCore/QuartzCore.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 #define METERS_PER_MILE 1609.344
-static NSUInteger numberOfTabs = 4;
 
-// Set the amount of Pages for TabOne (About), TabTwo (Tech), TabThree (Projects)
+/* Set total number of categories and number of projects in tab 3 */
+static NSUInteger numberOfTabs = 4;
+static NSUInteger kNumberOfProjects = 5;
+
+//    Set the amount of Pages for 
+//    TabOne (About)          TabTwo (Tech)
+//    TabThree (Projects)     TabFour (Contact)*/
 static NSUInteger kNumberOfPagesTabOne = 3;
 static NSUInteger kNumberOfPagesTabTwo =6;
-static NSUInteger kNumberOfPagesTabThree = 5;
+static NSUInteger kNumberOfPagesTabThree = 6;
 static NSUInteger kNumberOfPagesTabFour = 1;
 
-
+//
+//  Sets offset of the parent scrollview. This is the size 
+//  of everything below the navigation bar which is 64 pixels.
+//  Offset is respect to the entire window.                   
+//
 static NSUInteger parentScrollViewOffsetTop = 64;
 static NSUInteger parentScrollViewOffsetLeft = 0;
 static CGFloat parentScrollHeight = 1004-64-64;
 
-
-// Offset is with respect to the parent scrollview
-static NSUInteger childScrollViewOffsetLeft = 16;
+//
+// Sets the placement of the glass on screen.
+// Offset is with respect to the parent scrollview.
+//
+static NSUInteger childScrollViewOffsetLeft = 15;  
 static NSUInteger childScrollViewOffsetTop = 15;
 static NSUInteger childScrollViewHeight = 846;
 static NSUInteger childScrollViewWidth = 736;
 
+/* Sets position of the pageControl on each tab */
 static NSUInteger pageControlOffsetTop = 820;
+
+
 
 @interface HeliosAppViewController (PrivateMethods)
 
@@ -39,17 +53,22 @@ static NSUInteger pageControlOffsetTop = 820;
         WithPageNumber:(int)page 
             TotalPages:(int)totalPages 
         ImageViewArray:(NSMutableArray *)imageViewArray;
+- (void)scrollToPage:(id)sender;
+- (void)playPressed:(UIButton *)button;
+- (void)goToMiniApp:(id)sender;
+- (void)getDirections:(id)sender;
 
 /*- (void)cleanScrollView:(UIScrollView *)scrollView 
           AtCurrentPage:(int)currentPage 
          WithTotalPages:(int)totalPages
          ImageViewArray:(NSMutableArray *)imageViewArray;
 */
-- (void)scrollToPage:(id)sender;
+
 @end
 
 
 @implementation HeliosAppViewController
+
 @synthesize segmentedControl, parentScrollView, childScrollViewOne, childScrollViewTwo, childScrollViewThree, childScrollViewFour,
             pageControlOne,pageControlTwo, pageControlThree, imageViewsAbout, imageViewsTech, imageViewsProjects, imageViewsContact,
             home1,home2,home3, locationManager,startingPoint,arrow1,arrow2,arrow3, projectsNavScrollView;
@@ -352,9 +371,9 @@ static NSUInteger pageControlOffsetTop = 820;
     scrollViewProjects.showsHorizontalScrollIndicator = YES;
     scrollViewProjects.showsVerticalScrollIndicator = NO;
     scrollViewProjects.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    scrollViewProjects.bounces = YES;
-    scrollViewProjects.contentSize = CGSizeMake(kNumberOfPagesTabThree*(buttonProjectWidth+15), 191);
-    scrollViewProjects.contentInset = UIEdgeInsetsMake(0, 0, 0, 15);
+    scrollViewProjects.bounces = NO;
+    scrollViewProjects.contentSize = CGSizeMake(kNumberOfProjects*(buttonProjectWidth+15), 191);
+    scrollViewProjects.contentInset = UIEdgeInsetsMake(0, 0, 0, 7);
     scrollViewProjects.clipsToBounds = YES;
     scrollViewProjects.delegate = self;
     self.projectsNavScrollView = scrollViewProjects;
@@ -367,12 +386,12 @@ static NSUInteger pageControlOffsetTop = 820;
     [childScrollViewThree addSubview:backgroundScrollViewProjects];
     [backgroundScrollViewProjects release];
     
-    for (int i=1;i<=kNumberOfPagesTabThree;i++)
+    for (int i=1;i<=kNumberOfProjects;i++)
     {
         NSString *image = [[NSString alloc] initWithFormat:@"buttonP%i.png",i];
         NSString *imageHighlighted = [[NSString alloc] initWithFormat:@"buttonP%iH.png",i];
         
-        UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake((i-1)*(buttonProjectWidth+15)+15, 0, buttonProjectWidth, 191)];
+        UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake((i-1)*(buttonProjectWidth+15)+7, 0, buttonProjectWidth, 191)];
         [projectButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
         [projectButton setImage:[UIImage imageNamed:imageHighlighted] forState:UIControlStateHighlighted];
         projectButton.tag = i+2000; 
@@ -491,6 +510,25 @@ static NSUInteger pageControlOffsetTop = 820;
         [getDirectionsButton addTarget:self action:@selector(getDirections:) forControlEvents:UIControlEventTouchUpInside];
         [childScrollViewFour addSubview:getDirectionsButton];
         [getDirectionsButton release];
+    
+        // Add play button to project 1
+        UIButton *playButton = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth+220, 370, 81, 81)];    
+        [playButton setBackgroundImage:[UIImage imageNamed:@"buttonPlay.png"] forState:UIControlStateNormal];
+        [playButton setImage:[UIImage imageNamed:@"buttonPlayH.png"] forState:UIControlStateHighlighted];
+        [playButton addTarget:self action:@selector(playPressed:) forControlEvents: UIControlEventTouchUpInside]; 
+        playButton.tag = 50001;
+        [childScrollViewThree addSubview:playButton];
+        [playButton release];
+    
+        // Add play button to project 2
+        UIButton *playButton2 = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth*2 +620, 370, 81, 81)];    
+        [playButton2 setBackgroundImage:[UIImage imageNamed:@"buttonPlay.png"] forState:UIControlStateNormal];
+        [playButton2 setImage:[UIImage imageNamed:@"buttonPlayH.png"] forState:UIControlStateHighlighted];
+        [playButton2 addTarget:self action:@selector(playPressed:) forControlEvents: UIControlEventTouchUpInside]; 
+        playButton2.tag = 50002;
+        [childScrollViewThree addSubview:playButton2];
+        [playButton2 release];
+
         
         // ------------------------------------------------
         // Scroll view Flip side functionality
@@ -635,6 +673,7 @@ static NSUInteger pageControlOffsetTop = 820;
     [locationManager release];
     [startingPoint release];
     [projectsNavScrollView release];
+    
     [super dealloc];
 }
 
@@ -674,41 +713,6 @@ static NSUInteger pageControlOffsetTop = 820;
 */
  
 
-#pragma mark - load scroll view
-
-- (void)loadScrollView:(UIScrollView *)scrollView WithPageNumber:(int)page TotalPages:(int)totalPages ImageViewArray:(NSMutableArray *)imageViewArray
-{
-    if (page < 0)
-        return;
-    if (page >= totalPages)
-        return;
-    
-    // replace the placeholder if necessary
-    UIImageView *anImageView = [imageViewArray objectAtIndex:page];
-    if ((NSNull *)anImageView == [NSNull null])
-    {
-        NSString *theImageName;
-        if (scrollView == childScrollViewOne)
-            theImageName = [NSString stringWithFormat:@"about%i.png",page];
-        else if (scrollView == childScrollViewTwo)
-            theImageName = [NSString stringWithFormat:@"tech%i.png",page];
-        else if (scrollView == childScrollViewThree)
-            theImageName = [NSString stringWithFormat:@"project%i.png",page];
-        else // if (scrollView == childScrollViewFour)
-            theImageName = [NSString stringWithFormat:@"contact%i.png",page];
-
-        CGFloat xOrigin = childScrollViewWidth * page;
-        UIImageView *anImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:theImageName]];
-        anImageView.frame = CGRectMake(xOrigin, 0, childScrollViewWidth, childScrollViewHeight);
-        anImageView.tag = page;
-        
-        [imageViewArray replaceObjectAtIndex:page withObject:anImageView];
-
-        [scrollView addSubview:anImageView];
-        [anImageView release];
-    }
-}
-
 #pragma mark -
 #pragma mark UIScrollViewDelegate Methods
 
@@ -732,13 +736,14 @@ static NSUInteger pageControlOffsetTop = 820;
         pageControlOne.currentPage = page;
     else if (sender == childScrollViewTwo)
         pageControlTwo.currentPage = page;
-    else // if (sender == childScrollViewThree)
+    else if (sender == childScrollViewThree)
         pageControlThree.currentPage = page;
+    else {}
    // else if (sender == childScrollViewFour)
    //     pageControlFour.currentPage = page;
     
     
-    if (sender != parentScrollView)
+    if (sender != parentScrollView && sender != projectsNavScrollView)
     {
         int totalPages;
         NSMutableArray *imageViewArray;
@@ -822,6 +827,9 @@ static NSUInteger pageControlOffsetTop = 820;
     
     pageControlUsed = NO;
 }
+
+#pragma mark -
+#pragma mark Page Navigation and Page Control
 
 - (IBAction)toggleSwitch:(id) sender
 {
@@ -973,6 +981,8 @@ static NSUInteger pageControlOffsetTop = 820;
 
 - (void)scrollToPage:(id)sender
 {
+    // Button tags are used to determine which button is pressed and what scrollview needs to be moved
+    
     UIButton *button = (UIButton *)sender;
     CGRect frame = childScrollViewOne.frame;
     frame.origin.x = 0;
@@ -984,6 +994,7 @@ static NSUInteger pageControlOffsetTop = 820;
         [childScrollViewTwo scrollRectToVisible:frame animated:NO];
     else if (button.tag == 999)
         [childScrollViewThree scrollRectToVisible:frame animated:NO];
+    
     else if (button.tag == 150)                                         // Arrow Buttons
     {
         frame.origin.x = frame.size.width;
@@ -999,10 +1010,11 @@ static NSUInteger pageControlOffsetTop = 820;
         frame.origin.x = frame.size.width;
         [childScrollViewThree scrollRectToVisible:frame animated:YES];
     }
-    else if (button.tag >2000 && button.tag <3000)
+    
+    else if (button.tag >2000 && button.tag <3000)                      // Project Jump Nav
     {
         frame.origin.x = frame.size.width * (button.tag-2000);
-        [childScrollViewThree scrollRectToVisible:frame animated:YES];
+        [childScrollViewThree scrollRectToVisible:frame animated:NO];
     }
         
     else if (button.tag > 10 && button.tag < 20)                        // About Jump Buttons
@@ -1024,6 +1036,43 @@ static NSUInteger pageControlOffsetTop = 820;
     pageControlUsed = NO;
 }
 
+- (void)loadScrollView:(UIScrollView *)scrollView WithPageNumber:(int)page TotalPages:(int)totalPages ImageViewArray:(NSMutableArray *)imageViewArray
+{
+    if (page < 0)
+        return;
+    if (page >= totalPages)
+        return;
+    
+    // replace the placeholder if necessary
+    UIImageView *anImageView = [imageViewArray objectAtIndex:page];
+    if ((NSNull *)anImageView == [NSNull null])
+    {
+        NSString *theImageName;
+        if (scrollView == childScrollViewOne)
+            theImageName = [NSString stringWithFormat:@"about%i.png",page];
+        else if (scrollView == childScrollViewTwo)
+            theImageName = [NSString stringWithFormat:@"tech%i.png",page];
+        else if (scrollView == childScrollViewThree)
+            theImageName = [NSString stringWithFormat:@"project%i.png",page];
+        else // if (scrollView == childScrollViewFour)
+            theImageName = [NSString stringWithFormat:@"contact%i.png",page];
+        
+        CGFloat xOrigin = childScrollViewWidth * page;
+        UIImageView *anImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:theImageName]];
+        anImageView.frame = CGRectMake(xOrigin, 0, childScrollViewWidth, childScrollViewHeight);
+        anImageView.tag = page;
+        
+        [imageViewArray replaceObjectAtIndex:page withObject:anImageView];
+        
+        [scrollView addSubview:anImageView];
+        [scrollView sendSubviewToBack:anImageView];
+        [anImageView release];
+    }
+}
+
+#pragma mark -
+#pragma mark Button selectors
+
 - (void)goToMiniApp:(id)sender
 {
     NSString *str = @"itms-apps://ax.itunes.apple.com/us/app/virtual-mini/id417870781?mt=8";
@@ -1034,13 +1083,13 @@ static NSUInteger pageControlOffsetTop = 820;
 - (void)getDirections:(id)sender
 {
     NSString *url;
-    if (startingPoint == nil) {
+    if (startingPoint == nil )
+    {
         url = [NSString stringWithFormat: @"http://maps.google.com/maps?q=Helios+Interactive+San+Francisco+CA+94103&sll=37.774887,-122.409432"];
     }
     else
     {
         NSString* address = @"305 8th Street, San Francisco, CA 94103";
-
         url = [NSString stringWithFormat: @"http://maps.google.com/maps?saddr=%f,%f&daddr=%@",
                      startingPoint.coordinate.latitude, startingPoint.coordinate.longitude,
                      [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -1048,8 +1097,33 @@ static NSUInteger pageControlOffsetTop = 820;
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
 }
 
+- (void)playPressed:(UIButton *)button
+{
+    
+	// Play movie from URL
+    //NSURL *movieURL = [NSURL URLWithString:@"http://someurlsomewhere.com/movie.mp4"];
+    
+    NSURL *videoURL;
+    if (button.tag == 50001)
+    { 
+        NSString *moviePath = [[NSBundle mainBundle] pathForResource:@"mercedes" ofType:@"mov"];
+        videoURL = [[NSURL fileURLWithPath:moviePath] retain];
+    }
+    else
+    {
+        NSString *moviePath = [[NSBundle mainBundle] pathForResource:@"Agilent_final" ofType:@"mov"];
+        videoURL = [[NSURL fileURLWithPath:moviePath] retain];
+    }
+    
+    MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+    [self presentMoviePlayerViewControllerAnimated:playerViewController];
+    [playerViewController release];
+    
+}
+
 #pragma mark -
 #pragma mark CLLocationManagerDelegate Methods
+
 - (void)locationManager:(CLLocationManager *)manager 
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation
@@ -1058,6 +1132,7 @@ static NSUInteger pageControlOffsetTop = 820;
     {
         self.startingPoint = newLocation;
         [locationManager stopUpdatingLocation];
+        [locationManager startMonitoringSignificantLocationChanges];
     }
 }
 
