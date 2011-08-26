@@ -38,11 +38,13 @@
     UIButton *arrow1;
     UIButton *arrow2;
     UIButton *arrow3;
+    
+    int kNumberOfPagesTabThree;
 
-//    UIImageView *image1;
-//    UIImageView *image2;
+    UIView *projectNavView;
     BOOL transitioning;
 }
+@property (nonatomic, retain) UIView *projectNavView;
 
 @property (nonatomic, retain) CLLocation  *startingPoint;
 
@@ -76,6 +78,17 @@
 @property (nonatomic, retain) UIButton *arrow3;
 
 @property (nonatomic, retain) EasyTableView *horizontalView;
+@property (nonatomic, retain) EasyTableView *verticalView1;
+@property (nonatomic, retain) EasyTableView *verticalView2;
+@property (nonatomic, retain) EasyTableView *verticalView3;
+@property (nonatomic, retain) EasyTableView *verticalView4;
+
+
+@property (nonatomic, retain) NSArray *projects;
+@property (nonatomic, retain) NSArray *projectsAll;
+@property (nonatomic, retain) NSArray *projectsTouch;
+@property (nonatomic, retain) NSArray *projectsAR;
+@property (nonatomic, retain) NSArray *projectsTracking;
 
 
 - (IBAction)toggleSwitch:(id) sender;

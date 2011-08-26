@@ -21,7 +21,6 @@
 		D518B26B13F31801003B93CA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D518B26A13F31801003B93CA /* Default-Portrait~ipad.png */; };
 		D518B27A13F34C89003B93CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D518B27913F34C89003B93CA /* QuartzCore.framework */; };
 		D518B28913F47724003B93CA /* button-WhatWeDo.png in Resources */ = {isa = PBXBuildFile; fileRef = D518B28713F47724003B93CA /* button-WhatWeDo.png */; };
-		D518B28A13F47724003B93CA /* buttonWhatWeDoHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D518B28813F47724003B93CA /* buttonWhatWeDoHighlight.png */; };
 		D51C1CF913F4A05D0016BDE7 /* button3d.png in Resources */ = {isa = PBXBuildFile; fileRef = D51C1CEB13F4A05D0016BDE7 /* button3d.png */; };
 		D51C1CFA13F4A05D0016BDE7 /* button3dHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D51C1CEC13F4A05D0016BDE7 /* button3dHighlight.png */; };
 		D51C1CFB13F4A05D0016BDE7 /* buttonAR.png in Resources */ = {isa = PBXBuildFile; fileRef = D51C1CED13F4A05D0016BDE7 /* buttonAR.png */; };
@@ -40,7 +39,6 @@
 		D54629301402D5B9006CCE9E /* helios2.png in Resources */ = {isa = PBXBuildFile; fileRef = D546292F1402D5B9006CCE9E /* helios2.png */; };
 		D54629331402EB7E006CCE9E /* buttonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D54629311402EB7E006CCE9E /* buttonArrow.png */; };
 		D54629341402EB7E006CCE9E /* buttonArrowH.png in Resources */ = {isa = PBXBuildFile; fileRef = D54629321402EB7E006CCE9E /* buttonArrowH.png */; };
-		D54629361402F8C4006CCE9E /* scrollbarProjectNav.png in Resources */ = {isa = PBXBuildFile; fileRef = D54629351402F8C4006CCE9E /* scrollbarProjectNav.png */; };
 		D546293E14030832006CCE9E /* buttonT1.png in Resources */ = {isa = PBXBuildFile; fileRef = D546293814030832006CCE9E /* buttonT1.png */; };
 		D546293F14030832006CCE9E /* buttonT1H.png in Resources */ = {isa = PBXBuildFile; fileRef = D546293914030832006CCE9E /* buttonT1H.png */; };
 		D546294014030832006CCE9E /* buttonT2.png in Resources */ = {isa = PBXBuildFile; fileRef = D546293A14030832006CCE9E /* buttonT2.png */; };
@@ -63,16 +61,15 @@
 		D588621513FF31E90089CF61 /* buttonDirectionsH.png in Resources */ = {isa = PBXBuildFile; fileRef = D588621413FF31E90089CF61 /* buttonDirectionsH.png */; };
 		D588621B13FF96870089CF61 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D588621A13FF96870089CF61 /* icon.png */; };
 		D589F6471406DECA00598956 /* EasyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D589F6461406DECA00598956 /* EasyTableView.m */; };
-		D589F64C1406E12400598956 /* image_border.png in Resources */ = {isa = PBXBuildFile; fileRef = D589F6491406E12400598956 /* image_border.png */; };
-		D589F64E1406E12400598956 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D589F64B1406E12400598956 /* background.png */; };
-		D589F6501406E78800598956 /* selected_border.png in Resources */ = {isa = PBXBuildFile; fileRef = D589F64F1406E78800598956 /* selected_border.png */; };
 		D58F612E13F5A0C00081CE9C /* SwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58F612C13F5A0C00081CE9C /* SwitchViewController.m */; };
 		D58F613313F5A35A0081CE9C /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58F613113F5A35A0081CE9C /* GridViewController.m */; };
 		D58F613413F5A35A0081CE9C /* GridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58F613213F5A35A0081CE9C /* GridViewController.xib */; };
-		D5F0CAF213F48FA100594968 /* buttonHowItWorks.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F0CAEE13F48FA100594968 /* buttonHowItWorks.png */; };
-		D5F0CAF313F48FA100594968 /* buttonHowItWorksHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F0CAEF13F48FA100594968 /* buttonHowItWorksHighlight.png */; };
-		D5F0CAF413F48FA100594968 /* buttonWhatWeBring.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F0CAF013F48FA100594968 /* buttonWhatWeBring.png */; };
-		D5F0CAF513F48FA100594968 /* buttonWhatWeBringHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F0CAF113F48FA100594968 /* buttonWhatWeBringHighlight.png */; };
+		D5ADBC7614084C5C0014D9ED /* buttonNavH.png in Resources */ = {isa = PBXBuildFile; fileRef = D5ADBC7414084C5C0014D9ED /* buttonNavH.png */; };
+		D5ADBC7714084C5C0014D9ED /* buttonNavigation.png in Resources */ = {isa = PBXBuildFile; fileRef = D5ADBC7514084C5C0014D9ED /* buttonNavigation.png */; };
+		D5ADBC7F140855700014D9ED /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D5ADBC7E140855700014D9ED /* background.png */; };
+		D5ADBC82140858380014D9ED /* buttonNavBackH.png in Resources */ = {isa = PBXBuildFile; fileRef = D5ADBC80140858370014D9ED /* buttonNavBackH.png */; };
+		D5ADBC83140858380014D9ED /* buttonNavBack.png in Resources */ = {isa = PBXBuildFile; fileRef = D5ADBC81140858380014D9ED /* buttonNavBack.png */; };
+		D5ADBC85140859370014D9ED /* projectNav.png in Resources */ = {isa = PBXBuildFile; fileRef = D5ADBC84140859370014D9ED /* projectNav.png */; };
 		D5F5BD7313FDB67200AED5AF /* about1.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BD6213FDB67100AED5AF /* about1.png */; };
 		D5F5BD7413FDB67200AED5AF /* about2.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BD6313FDB67100AED5AF /* about2.png */; };
 		D5F5BD7613FDB67200AED5AF /* project0.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BD6613FDB67100AED5AF /* project0.png */; };
@@ -95,7 +92,6 @@
 		D5F5BDB013FDE11B00AED5AF /* p3H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BDAB13FDE11B00AED5AF /* p3H.png */; };
 		D5F5BDB113FDE11B00AED5AF /* p4H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BDAC13FDE11B00AED5AF /* p4H.png */; };
 		D5F5BDB213FDE11B00AED5AF /* p5H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BDAD13FDE11B00AED5AF /* p5H.png */; };
-		D5F5BDB413FDE44D00AED5AF /* template.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BDB313FDE44C00AED5AF /* template.png */; };
 		D5F5BDB613FDE47700AED5AF /* backgroundMercedes.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BDB513FDE47500AED5AF /* backgroundMercedes.png */; };
 		D5F5BDBA13FDE4C400AED5AF /* glassMask.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BDB913FDE4C400AED5AF /* glassMask.png */; };
 		D5F5BDBC13FDE4DF00AED5AF /* backgroundGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F5BDBB13FDE4DE00AED5AF /* backgroundGrid.png */; };
@@ -119,6 +115,13 @@
 		D5FD74AB140714D200412322 /* tile3H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74A6140714D200412322 /* tile3H.png */; };
 		D5FD74AC140714D200412322 /* tile4H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74A7140714D200412322 /* tile4H.png */; };
 		D5FD74AD140714D200412322 /* tile5H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74A8140714D200412322 /* tile5H.png */; };
+		D5FD74AF140817B500412322 /* projects.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74AE140817B500412322 /* projects.plist */; };
+		D5FD74B814082A3300412322 /* tile6.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74B414082A3200412322 /* tile6.png */; };
+		D5FD74B914082A3300412322 /* tile6H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74B514082A3200412322 /* tile6H.png */; };
+		D5FD74BA14082A3300412322 /* tile7.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74B614082A3200412322 /* tile7.png */; };
+		D5FD74BB14082A3300412322 /* tile7H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74B714082A3300412322 /* tile7H.png */; };
+		D5FD74BE14082B5500412322 /* project6.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74BC14082B5500412322 /* project6.png */; };
+		D5FD74BF14082B5500412322 /* project7.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FD74BD14082B5500412322 /* project7.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,8 +144,6 @@
 		D518B26A13F31801003B93CA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		D518B27913F34C89003B93CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D518B28713F47724003B93CA /* button-WhatWeDo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-WhatWeDo.png"; sourceTree = "<group>"; };
-		D518B28813F47724003B93CA /* buttonWhatWeDoHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonWhatWeDoHighlight.png; sourceTree = "<group>"; };
-		D51C1CEA13F4A05D0016BDE7 /* button-WhatWeDo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-WhatWeDo.png"; sourceTree = "<group>"; };
 		D51C1CEB13F4A05D0016BDE7 /* button3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3d.png; sourceTree = "<group>"; };
 		D51C1CEC13F4A05D0016BDE7 /* button3dHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3dHighlight.png; sourceTree = "<group>"; };
 		D51C1CED13F4A05D0016BDE7 /* buttonAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonAR.png; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		D546292F1402D5B9006CCE9E /* helios2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helios2.png; sourceTree = "<group>"; };
 		D54629311402EB7E006CCE9E /* buttonArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonArrow.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonArrow.png"; sourceTree = "<group>"; };
 		D54629321402EB7E006CCE9E /* buttonArrowH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonArrowH.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonArrowH.png"; sourceTree = "<group>"; };
-		D54629351402F8C4006CCE9E /* scrollbarProjectNav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scrollbarProjectNav.png; path = "../../../Desktop/HELIOS/iPad Application/scrollbarProjectNav.png"; sourceTree = "<group>"; };
 		D546293814030832006CCE9E /* buttonT1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonT1.png; sourceTree = "<group>"; };
 		D546293914030832006CCE9E /* buttonT1H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonT1H.png; sourceTree = "<group>"; };
 		D546293A14030832006CCE9E /* buttonT2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonT2.png; sourceTree = "<group>"; };
@@ -192,18 +192,17 @@
 		D588621A13FF96870089CF61 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D589F6451406DEC900598956 /* EasyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTableView.h; sourceTree = "<group>"; };
 		D589F6461406DECA00598956 /* EasyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTableView.m; sourceTree = "<group>"; };
-		D589F6491406E12400598956 /* image_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_border.png; sourceTree = "<group>"; };
-		D589F64B1406E12400598956 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		D589F64F1406E78800598956 /* selected_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected_border.png; sourceTree = "<group>"; };
 		D58F612B13F5A0C00081CE9C /* SwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchViewController.h; sourceTree = "<group>"; };
 		D58F612C13F5A0C00081CE9C /* SwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchViewController.m; sourceTree = "<group>"; };
 		D58F613013F5A35A0081CE9C /* GridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewController.h; sourceTree = "<group>"; };
 		D58F613113F5A35A0081CE9C /* GridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewController.m; sourceTree = "<group>"; };
 		D58F613213F5A35A0081CE9C /* GridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridViewController.xib; sourceTree = "<group>"; };
-		D5F0CAEE13F48FA100594968 /* buttonHowItWorks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHowItWorks.png; sourceTree = "<group>"; };
-		D5F0CAEF13F48FA100594968 /* buttonHowItWorksHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHowItWorksHighlight.png; sourceTree = "<group>"; };
-		D5F0CAF013F48FA100594968 /* buttonWhatWeBring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonWhatWeBring.png; sourceTree = "<group>"; };
-		D5F0CAF113F48FA100594968 /* buttonWhatWeBringHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonWhatWeBringHighlight.png; sourceTree = "<group>"; };
+		D5ADBC7414084C5C0014D9ED /* buttonNavH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonNavH.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonNavH.png"; sourceTree = "<group>"; };
+		D5ADBC7514084C5C0014D9ED /* buttonNavigation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonNavigation.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonNavigation.png"; sourceTree = "<group>"; };
+		D5ADBC7E140855700014D9ED /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = "../../../Desktop/HELIOS/iPad Application/Backgrounds/background.png"; sourceTree = "<group>"; };
+		D5ADBC80140858370014D9ED /* buttonNavBackH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonNavBackH.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonNavBackH.png"; sourceTree = "<group>"; };
+		D5ADBC81140858380014D9ED /* buttonNavBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonNavBack.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonNavBack.png"; sourceTree = "<group>"; };
+		D5ADBC84140859370014D9ED /* projectNav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectNav.png; sourceTree = "<group>"; };
 		D5F5BD6213FDB67100AED5AF /* about1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about1.png; sourceTree = "<group>"; };
 		D5F5BD6313FDB67100AED5AF /* about2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about2.png; sourceTree = "<group>"; };
 		D5F5BD6613FDB67100AED5AF /* project0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project0.png; sourceTree = "<group>"; };
@@ -226,7 +225,6 @@
 		D5F5BDAB13FDE11B00AED5AF /* p3H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p3H.png; sourceTree = "<group>"; };
 		D5F5BDAC13FDE11B00AED5AF /* p4H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4H.png; sourceTree = "<group>"; };
 		D5F5BDAD13FDE11B00AED5AF /* p5H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5H.png; sourceTree = "<group>"; };
-		D5F5BDB313FDE44C00AED5AF /* template.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = template.png; path = "../../../Desktop/HELIOS/iPad Application/Backgrounds/template.png"; sourceTree = "<group>"; };
 		D5F5BDB513FDE47500AED5AF /* backgroundMercedes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundMercedes.png; path = "../../../Desktop/HELIOS/iPad Application/Backgrounds/backgroundMercedes.png"; sourceTree = "<group>"; };
 		D5F5BDB913FDE4C400AED5AF /* glassMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glassMask.png; path = "../../../Desktop/HELIOS/iPad Application/glass tiles/glassMask.png"; sourceTree = "<group>"; };
 		D5F5BDBB13FDE4DE00AED5AF /* backgroundGrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundGrid.png; path = "../../../Desktop/HELIOS/iPad Application/Backgrounds/backgroundGrid.png"; sourceTree = "<group>"; };
@@ -236,8 +234,6 @@
 		D5F5BDC013FDE58600AED5AF /* buttonMiniHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonMiniHighlight.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonMiniHighlight.png"; sourceTree = "<group>"; };
 		D5F5BDC513FDE5A500AED5AF /* buttonTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonTile.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonTile.png"; sourceTree = "<group>"; };
 		D5F5BDC713FDE5AA00AED5AF /* buttonList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonList.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonList.png"; sourceTree = "<group>"; };
-		D5F5BDC913FDE5BC00AED5AF /* buttonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonBack.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonBack.png"; sourceTree = "<group>"; };
-		D5F5BDCA13FDE5BC00AED5AF /* buttonBackHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonBackHighlight.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonBackHighlight.png"; sourceTree = "<group>"; };
 		D5F5BDCE13FDE95E00AED5AF /* contact0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact0.png; sourceTree = "<group>"; };
 		D5F5BDD013FEE18D00AED5AF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D5F5BDDC13FF0AE000AED5AF /* MapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewAnnotation.h; sourceTree = "<group>"; };
@@ -253,6 +249,13 @@
 		D5FD74A6140714D200412322 /* tile3H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile3H.png; sourceTree = "<group>"; };
 		D5FD74A7140714D200412322 /* tile4H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile4H.png; sourceTree = "<group>"; };
 		D5FD74A8140714D200412322 /* tile5H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile5H.png; sourceTree = "<group>"; };
+		D5FD74AE140817B500412322 /* projects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = projects.plist; sourceTree = "<group>"; };
+		D5FD74B414082A3200412322 /* tile6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile6.png; sourceTree = "<group>"; };
+		D5FD74B514082A3200412322 /* tile6H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile6H.png; sourceTree = "<group>"; };
+		D5FD74B614082A3200412322 /* tile7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile7.png; sourceTree = "<group>"; };
+		D5FD74B714082A3300412322 /* tile7H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile7H.png; sourceTree = "<group>"; };
+		D5FD74BC14082B5500412322 /* project6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project6.png; sourceTree = "<group>"; };
+		D5FD74BD14082B5500412322 /* project7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project7.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,12 +322,12 @@
 				D58F612C13F5A0C00081CE9C /* SwitchViewController.m */,
 				D518B24713F31773003B93CA /* HeliosAppViewController.h */,
 				D518B24813F31773003B93CA /* HeliosAppViewController.m */,
+				D5FD74AE140817B500412322 /* projects.plist */,
 				D58F613013F5A35A0081CE9C /* GridViewController.h */,
 				D58F613113F5A35A0081CE9C /* GridViewController.m */,
 				D52A64B913FB1EE000A03E74 /* NickViewController.h */,
 				D52A64BA13FB1EE000A03E74 /* NickViewController.m */,
 				D555D4E913FC63A500F41AE8 /* MercedesViewController.h */,
-				D555D4EA13FC63A500F41AE8 /* MercedesViewController.m */,
 				D5F5BDDC13FF0AE000AED5AF /* MapViewAnnotation.h */,
 				D5F5BDDD13FF0AE100AED5AF /* MapViewAnnotation.m */,
 				D58F613513F5AD2F0081CE9C /* NIBs */,
@@ -336,13 +339,10 @@
 		D518B23913F31773003B93CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D5ADBC7E140855700014D9ED /* background.png */,
+				D555D4EA13FC63A500F41AE8 /* MercedesViewController.m */,
 				D5FD749714070FEF00412322 /* project_tiles */,
-				D589F64F1406E78800598956 /* selected_border.png */,
-				D589F6491406E12400598956 /* image_border.png */,
-				D589F64B1406E12400598956 /* background.png */,
 				D546293714030832006CCE9E /* projectsNavigation */,
-				D54629351402F8C4006CCE9E /* scrollbarProjectNav.png */,
-				D5F5BDB313FDE44C00AED5AF /* template.png */,
 				D5F5BDBB13FDE4DE00AED5AF /* backgroundGrid.png */,
 				D5F5BDB513FDE47500AED5AF /* backgroundMercedes.png */,
 				D5F5BDB913FDE4C400AED5AF /* glassMask.png */,
@@ -365,6 +365,10 @@
 		D51C1D0713F4A06F0016BDE7 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				D5ADBC80140858370014D9ED /* buttonNavBackH.png */,
+				D5ADBC81140858380014D9ED /* buttonNavBack.png */,
+				D5ADBC7414084C5C0014D9ED /* buttonNavH.png */,
+				D5ADBC7514084C5C0014D9ED /* buttonNavigation.png */,
 				D5787B9C14044F19001F7FF3 /* buttonPlay.png */,
 				D5787B9D14044F19001F7FF3 /* buttonPlayH.png */,
 				D54629311402EB7E006CCE9E /* buttonArrow.png */,
@@ -375,8 +379,6 @@
 				D5F5BDBE13FDE58500AED5AF /* buttonBackHighlight.png */,
 				D5F5BDBF13FDE58500AED5AF /* buttonMini.png */,
 				D5F5BDC013FDE58600AED5AF /* buttonMiniHighlight.png */,
-				D5F5BDC913FDE5BC00AED5AF /* buttonBack.png */,
-				D5F5BDCA13FDE5BC00AED5AF /* buttonBackHighlight.png */,
 				D5F5BDC513FDE5A500AED5AF /* buttonTile.png */,
 				D5F5BDC713FDE5AA00AED5AF /* buttonList.png */,
 				D51C1D0813F4A6220016BDE7 /* buttonHome.png */,
@@ -394,13 +396,7 @@
 				D51C1CF513F4A05D0016BDE7 /* buttonWhatWeBring.png */,
 				D51C1CF613F4A05D0016BDE7 /* buttonWhatWeBringHighlight.png */,
 				D51C1CF713F4A05D0016BDE7 /* buttonWhatWeDoHighlight.png */,
-				D5F0CAEE13F48FA100594968 /* buttonHowItWorks.png */,
-				D5F0CAEF13F48FA100594968 /* buttonHowItWorksHighlight.png */,
-				D5F0CAF013F48FA100594968 /* buttonWhatWeBring.png */,
-				D5F0CAF113F48FA100594968 /* buttonWhatWeBringHighlight.png */,
 				D518B28713F47724003B93CA /* button-WhatWeDo.png */,
-				D518B28813F47724003B93CA /* buttonWhatWeDoHighlight.png */,
-				D51C1CEA13F4A05D0016BDE7 /* button-WhatWeDo.png */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -449,6 +445,9 @@
 		D5F5BD6513FDB67100AED5AF /* ScrollView - Projects */ = {
 			isa = PBXGroup;
 			children = (
+				D5ADBC84140859370014D9ED /* projectNav.png */,
+				D5FD74BC14082B5500412322 /* project6.png */,
+				D5FD74BD14082B5500412322 /* project7.png */,
 				D5F5BD8713FDC05D00AED5AF /* project1.png */,
 				D5F5BD8813FDC05D00AED5AF /* project2.png */,
 				D5F5BD6613FDB67100AED5AF /* project0.png */,
@@ -513,6 +512,10 @@
 		D5FD749714070FEF00412322 /* project_tiles */ = {
 			isa = PBXGroup;
 			children = (
+				D5FD74B414082A3200412322 /* tile6.png */,
+				D5FD74B514082A3200412322 /* tile6H.png */,
+				D5FD74B614082A3200412322 /* tile7.png */,
+				D5FD74B714082A3300412322 /* tile7H.png */,
 				D5FD74A4140714D200412322 /* tile1H.png */,
 				D5FD74A5140714D200412322 /* tile2H.png */,
 				D5FD74A6140714D200412322 /* tile3H.png */,
@@ -586,11 +589,6 @@
 				D518B26913F317EF003B93CA /* icon-black.png in Resources */,
 				D518B26B13F31801003B93CA /* Default-Portrait~ipad.png in Resources */,
 				D518B28913F47724003B93CA /* button-WhatWeDo.png in Resources */,
-				D518B28A13F47724003B93CA /* buttonWhatWeDoHighlight.png in Resources */,
-				D5F0CAF213F48FA100594968 /* buttonHowItWorks.png in Resources */,
-				D5F0CAF313F48FA100594968 /* buttonHowItWorksHighlight.png in Resources */,
-				D5F0CAF413F48FA100594968 /* buttonWhatWeBring.png in Resources */,
-				D5F0CAF513F48FA100594968 /* buttonWhatWeBringHighlight.png in Resources */,
 				D51C1CF913F4A05D0016BDE7 /* button3d.png in Resources */,
 				D51C1CFA13F4A05D0016BDE7 /* button3dHighlight.png in Resources */,
 				D51C1CFB13F4A05D0016BDE7 /* buttonAR.png in Resources */,
@@ -628,7 +626,6 @@
 				D5F5BDB013FDE11B00AED5AF /* p3H.png in Resources */,
 				D5F5BDB113FDE11B00AED5AF /* p4H.png in Resources */,
 				D5F5BDB213FDE11B00AED5AF /* p5H.png in Resources */,
-				D5F5BDB413FDE44D00AED5AF /* template.png in Resources */,
 				D5F5BDB613FDE47700AED5AF /* backgroundMercedes.png in Resources */,
 				D5F5BDBA13FDE4C400AED5AF /* glassMask.png in Resources */,
 				D5F5BDBC13FDE4DF00AED5AF /* backgroundGrid.png in Resources */,
@@ -645,7 +642,6 @@
 				D54629301402D5B9006CCE9E /* helios2.png in Resources */,
 				D54629331402EB7E006CCE9E /* buttonArrow.png in Resources */,
 				D54629341402EB7E006CCE9E /* buttonArrowH.png in Resources */,
-				D54629361402F8C4006CCE9E /* scrollbarProjectNav.png in Resources */,
 				D546293E14030832006CCE9E /* buttonT1.png in Resources */,
 				D546293F14030832006CCE9E /* buttonT1H.png in Resources */,
 				D546294014030832006CCE9E /* buttonT2.png in Resources */,
@@ -661,9 +657,6 @@
 				D5787B9B14044A4D001F7FF3 /* project5.png in Resources */,
 				D5787B9E14044F19001F7FF3 /* buttonPlay.png in Resources */,
 				D5787B9F14044F19001F7FF3 /* buttonPlayH.png in Resources */,
-				D589F64C1406E12400598956 /* image_border.png in Resources */,
-				D589F64E1406E12400598956 /* background.png in Resources */,
-				D589F6501406E78800598956 /* selected_border.png in Resources */,
 				D5FD749D14070FEF00412322 /* tile1.png in Resources */,
 				D5FD749E14070FEF00412322 /* tile2.png in Resources */,
 				D5FD749F14070FEF00412322 /* tile3.png in Resources */,
@@ -675,6 +668,19 @@
 				D5FD74AB140714D200412322 /* tile3H.png in Resources */,
 				D5FD74AC140714D200412322 /* tile4H.png in Resources */,
 				D5FD74AD140714D200412322 /* tile5H.png in Resources */,
+				D5FD74AF140817B500412322 /* projects.plist in Resources */,
+				D5FD74B814082A3300412322 /* tile6.png in Resources */,
+				D5FD74B914082A3300412322 /* tile6H.png in Resources */,
+				D5FD74BA14082A3300412322 /* tile7.png in Resources */,
+				D5FD74BB14082A3300412322 /* tile7H.png in Resources */,
+				D5FD74BE14082B5500412322 /* project6.png in Resources */,
+				D5FD74BF14082B5500412322 /* project7.png in Resources */,
+				D5ADBC7614084C5C0014D9ED /* buttonNavH.png in Resources */,
+				D5ADBC7714084C5C0014D9ED /* buttonNavigation.png in Resources */,
+				D5ADBC7F140855700014D9ED /* background.png in Resources */,
+				D5ADBC82140858380014D9ED /* buttonNavBackH.png in Resources */,
+				D5ADBC83140858380014D9ED /* buttonNavBack.png in Resources */,
+				D5ADBC85140859370014D9ED /* projectNav.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
