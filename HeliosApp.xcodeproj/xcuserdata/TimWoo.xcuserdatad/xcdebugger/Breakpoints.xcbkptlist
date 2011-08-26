@@ -9,12 +9,40 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "HeliosApp/HeliosAppViewController.m"
-         timestampString = "335907307.326336"
+         timestampString = "336006257.175155"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "849"
-         endingLineNumber = "849"
+         startingLineNumber = "1024"
+         endingLineNumber = "1024"
          landmarkName = "-scrollViewDidScroll:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "HeliosApp/HeliosAppViewController.m"
+         timestampString = "336012290.573912"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1388"
+         endingLineNumber = "1388"
+         landmarkName = "-easyTableView:setDataForView:forIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "HeliosApp/HeliosAppViewController.m"
+         timestampString = "336006257.175155"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1247"
+         endingLineNumber = "1247"
+         landmarkName = "-scrollToPage:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -9,16 +9,31 @@
 #import "HeliosAppViewController.h"
 #import "MapViewAnnotation.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <QuartzCore/QuartzCore.h>
+
+#define PORTRAIT_WIDTH				768
+#define LANDSCAPE_HEIGHT			(1024-20)
+#define NUM_OF_CELLS				21
+#define HORIZONTAL_TABLEVIEW_HEIGHT	195
+#define HORIZONTAL_TABLEVIEW_WIDTH  640
+#define HORIZONTAL_CELL_WIDTH       195
+#define TABLE_BACKGROUND_COLOR		[[UIColor blackColor] colorWithAlphaComponent:0.1]
+
+#define BORDER_VIEW_TAG				10
 
 // #define METERS_PER_MILE 1609.344
 
 /* Set total number of categories and number of projects in tab 3 */
 static NSUInteger numberOfTabs = 4;
+
 static NSUInteger kNumberOfProjects = 5;
+static NSUInteger kNumberOfTouchProjects = 2;
+static NSUInteger kNumberOfARProjects = 3;
 
 //    Set the amount of Pages for 
 //    TabOne (About)          TabTwo (Tech)
 //    TabThree (Projects)     TabFour (Contact)*/
+
 static NSUInteger kNumberOfPagesTabOne = 3;
 static NSUInteger kNumberOfPagesTabTwo =6;
 static NSUInteger kNumberOfPagesTabThree = 6;
@@ -48,12 +63,14 @@ static NSUInteger pageControlOffsetTop = 820;
 
 
 @interface HeliosAppViewController (PrivateMethods)
-
+- (void)insertMap;
 - (void)insertProjectNavigation;
+
 - (void)insertContentIntoTabOne:(UIView *)tabOne;
 - (void)insertContentIntoTabTwo:(UIView *)tabTwo;
 - (void)insertContentIntoTabThree:(UIView *)tabThree;
 - (void)insertContentIntoTabFour:(UIView *)tabFour;
+
 - (void)insertButtonsIntoChildScrollView;
 - (void)insertButtonsIntoParentScrollView;
 - (void)insertLocationManager;
@@ -68,6 +85,8 @@ static NSUInteger pageControlOffsetTop = 820;
 - (void)goToMiniApp:(id)sender;
 - (void)getDirections:(id)sender;
 - (void)playPressed:(UIButton *)button;
+- (void)setupHorizontalView;
+
 /*- (void)cleanScrollView:(UIScrollView *)scrollView 
           AtCurrentPage:(int)currentPage 
          WithTotalPages:(int)totalPages
@@ -81,7 +100,7 @@ static NSUInteger pageControlOffsetTop = 820;
 
 @synthesize segmentedControl, parentScrollView, childScrollViewOne, childScrollViewTwo, childScrollViewThree, childScrollViewFour,
             pageControlOne,pageControlTwo, pageControlThree, imageViewsAbout, imageViewsTech, imageViewsProjects, imageViewsContact,
-            home1,home2,home3, locationManager,startingPoint,arrow1,arrow2,arrow3, projectsNavScrollView;
+            home1,home2,home3, locationManager,startingPoint,arrow1,arrow2,arrow3, projectsNavScrollView, projectsNavScrollViewTouch, projectsNavScrollViewAR, horizontalView;
 
 #pragma mark -
 #pragma mark Private Methods
@@ -231,10 +250,14 @@ static NSUInteger pageControlOffsetTop = 820;
     [control3 release];
     
     // Inserts project nav into tab three
-    [self insertProjectNavigation];                 
+    //[self insertProjectNavigation];   
+    
+    [self setupHorizontalView];
+
 }
 
 - (void)insertContentIntoTabFour:(UIView *)tabFour  {
+    
     // view controllers are created lazily
     // in the meantime, load the array with placeholders which will be replaced on demand
     NSMutableArray *emptyViews4 = [[NSMutableArray alloc] init];
@@ -259,8 +282,37 @@ static NSUInteger pageControlOffsetTop = 820;
     
     
     [self loadScrollView:childScrollViewFour WithPageNumber:0 TotalPages:kNumberOfPagesTabFour ImageViewArray:imageViewsContact];
-    [self loadScrollView:childScrollViewFour WithPageNumber:1 TotalPages:kNumberOfPagesTabFour ImageViewArray:imageViewsContact];
     
+    //[self loadScrollView:childScrollViewFour WithPageNumber:1 TotalPages:kNumberOfPagesTabFour ImageViewArray:imageViewsContact];
+    
+    [self insertMap];
+
+    // -- add inner scroll view to tab 4
+    
+    [tabFour addSubview:childScrollViewFour];       
+    
+    // -- add mask to tab 4
+    
+    UIImageView *imageMask4 = [[UIImageView alloc] initWithFrame:CGRectMake(childScrollViewOffsetLeft, childScrollViewOffsetTop, childScrollViewWidth, childScrollViewHeight)];
+    imageMask4.image = [UIImage imageNamed:@"glassMask.png"];
+    [tabFour addSubview:imageMask4];
+    [imageMask4 release];
+    
+    // --- add page control to tab 4
+    /*
+     UIPageControl *control4 = [[UIPageControl alloc] initWithFrame:CGRectMake(0,pageControlOffsetTop,768,36)];
+     control4.numberOfPages = kNumberOfPagesTabTwo;
+     control4.currentPage = 0;
+     [control4 addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+     
+     self.pageControlFour = control4;
+     [tabFour addSubview:pageControlFour];
+     [control4 release];
+     */
+    
+}
+
+- (void)insertMap {
     // add map to tab 4
     MKMapView* mapView = [[MKMapView alloc] initWithFrame:CGRectMake(255, 294, 242, 227)];
     mapView.mapType = MKMapTypeStandard;
@@ -287,37 +339,10 @@ static NSUInteger pageControlOffsetTop = 820;
     [childScrollViewFour addSubview:mapView];
     [mapView release];
     
-    // -- add inner scroll view to tab 4
-    
-    [tabFour addSubview:childScrollViewFour];       
-    
-    // -- add mask to tab 4
-    
-    UIImageView *imageMask4 = [[UIImageView alloc] initWithFrame:CGRectMake(childScrollViewOffsetLeft, childScrollViewOffsetTop, childScrollViewWidth, childScrollViewHeight)];
-    imageMask4.image = [UIImage imageNamed:@"glassMask.png"];
-    [tabFour addSubview:imageMask4];
-    [imageMask4 release];
-    
-    // --- add page control to tab 4
-    /*
-     UIPageControl *control4 = [[UIPageControl alloc] initWithFrame:CGRectMake(0,pageControlOffsetTop,768,36)];
-     control4.numberOfPages = kNumberOfPagesTabTwo;
-     control4.currentPage = 0;
-     [control4 addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
-     
-     self.pageControlFour = control4;
-     [tabFour addSubview:pageControlFour];
-     [control4 release];
-     */
-    
 }
 
-- (void)insertProjectNavigation {
-    //-----------------------------//
-    //   Projects Nav ScrollView   //
-    //-----------------------------//
-    
-    int buttonProjectWidth = 199;
+- (void)insertProjectCategoryAll {
+  int buttonProjectWidth = 199;
     
     UIScrollView *scrollViewProjects = [[UIScrollView alloc] initWithFrame:CGRectMake(50, 510,641, 191)];
     scrollViewProjects.pagingEnabled = NO;
@@ -326,7 +351,6 @@ static NSUInteger pageControlOffsetTop = 820;
     scrollViewProjects.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     scrollViewProjects.bounces = NO;
     scrollViewProjects.contentSize = CGSizeMake(kNumberOfProjects*(buttonProjectWidth+15), 191);
-    scrollViewProjects.contentInset = UIEdgeInsetsMake(0, 0, 0, 7);
     scrollViewProjects.clipsToBounds = YES;
     scrollViewProjects.delegate = self;
     self.projectsNavScrollView = scrollViewProjects;
@@ -334,15 +358,10 @@ static NSUInteger pageControlOffsetTop = 820;
     
     [childScrollViewThree addSubview:projectsNavScrollView];
     
-    UIImageView *backgroundScrollViewProjects = [[UIImageView alloc] initWithFrame:CGRectMake(50,510, 641, 191)];
-    backgroundScrollViewProjects.image = [UIImage imageNamed:@"scrollbarProjectNav.png"];
-    [childScrollViewThree addSubview:backgroundScrollViewProjects];
-    [backgroundScrollViewProjects release];
-    
-    for (int i=1;i<=kNumberOfProjects;i++)
+    for (int i=1;i<=kNumberOfTouchProjects;i++)
     {
-        NSString *projectImage = [NSString stringWithFormat:@"buttonP%i.png",i];
-        NSString *projectImageHighlighted = [NSString stringWithFormat:@"buttonP%iH.png",i];
+        NSString *projectImage = [NSString stringWithFormat:@"buttonT%i.png",i];
+        NSString *projectImageHighlighted = [NSString stringWithFormat:@"buttonT%iH.png",i];
         
         UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake((i-1)*(buttonProjectWidth+15)+7, 0, buttonProjectWidth, 191)];
         [projectButton setImage:[UIImage imageNamed:projectImage] forState:UIControlStateNormal];
@@ -351,9 +370,164 @@ static NSUInteger pageControlOffsetTop = 820;
         [projectButton addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
         [projectsNavScrollView addSubview:projectButton];
         [projectButton release];
-        
     }
     
+    for (int i=1;i<=kNumberOfARProjects;i++)
+    {
+        NSString *projectImage = [NSString stringWithFormat:@"buttonA%i.png",i];
+        NSString *projectImageHighlighted = [NSString stringWithFormat:@"buttonA%iH.png",i];
+        
+        UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake((kNumberOfTouchProjects*buttonProjectWidth+15)+(i-1)*(buttonProjectWidth+15)+7+15, 0, buttonProjectWidth, 191)];
+        [projectButton setImage:[UIImage imageNamed:projectImage] forState:UIControlStateNormal];
+        [projectButton setImage:[UIImage imageNamed:projectImageHighlighted] forState:UIControlStateHighlighted];
+        projectButton.tag = kNumberOfTouchProjects+i+2000; 
+        [projectButton addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+        [projectsNavScrollView addSubview:projectButton];
+        [projectButton release];
+    }
+}
+
+- (void)insertProjectCategoryTouch {
+    int buttonProjectWidth = 199;
+    
+    UIScrollView *scrollViewProjects = [[UIScrollView alloc] initWithFrame:CGRectMake(50, 510,641, 191)];
+    scrollViewProjects.pagingEnabled = NO;
+    scrollViewProjects.showsHorizontalScrollIndicator = YES;
+    scrollViewProjects.showsVerticalScrollIndicator = NO;
+    scrollViewProjects.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    scrollViewProjects.bounces = NO;
+    scrollViewProjects.contentSize = CGSizeMake(kNumberOfTouchProjects*(buttonProjectWidth+15), 191);
+    scrollViewProjects.clipsToBounds = YES;
+    scrollViewProjects.delegate = self;
+    self.projectsNavScrollViewTouch = scrollViewProjects;
+    [scrollViewProjects release];
+    
+    [childScrollViewThree addSubview:projectsNavScrollViewTouch];
+    
+    for (int i=1;i<=kNumberOfTouchProjects;i++)
+    {
+        NSString *projectImage = [NSString stringWithFormat:@"buttonT%i.png",i];
+        NSString *projectImageHighlighted = [NSString stringWithFormat:@"buttonT%iH.png",i];
+        
+        UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake((i-1)*(buttonProjectWidth+15)+7, 0, buttonProjectWidth, 191)];
+        [projectButton setImage:[UIImage imageNamed:projectImage] forState:UIControlStateNormal];
+        [projectButton setImage:[UIImage imageNamed:projectImageHighlighted] forState:UIControlStateHighlighted];
+        projectButton.tag = i+2000; 
+        [projectButton addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+        [projectsNavScrollViewTouch addSubview:projectButton];
+        [projectButton release];
+    }
+    
+    projectsNavScrollViewTouch.hidden = YES;
+}
+
+- (void)insertProjectCategoryAR {
+    int buttonProjectWidth = 199;
+    
+    UIScrollView *scrollViewProjects = [[UIScrollView alloc] initWithFrame:CGRectMake(50, 510,641, 191)];
+    scrollViewProjects.pagingEnabled = NO;
+    scrollViewProjects.showsHorizontalScrollIndicator = YES;
+    scrollViewProjects.showsVerticalScrollIndicator = NO;
+    scrollViewProjects.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    scrollViewProjects.bounces = NO;
+    scrollViewProjects.contentSize = CGSizeMake(kNumberOfARProjects*(buttonProjectWidth+15), 191);
+    scrollViewProjects.clipsToBounds = YES;
+    scrollViewProjects.delegate = self;
+    self.projectsNavScrollViewAR = scrollViewProjects;
+    [scrollViewProjects release];
+    
+    [childScrollViewThree addSubview:projectsNavScrollViewAR];
+    
+    for (int i=1;i<=kNumberOfARProjects;i++)
+    {
+        NSString *projectImage = [NSString stringWithFormat:@"buttonA%i.png",i];
+        NSString *projectImageHighlighted = [NSString stringWithFormat:@"buttonA%iH.png",i];
+        
+        UIButton *projectButton = [[UIButton alloc] initWithFrame:CGRectMake((i-1)*(buttonProjectWidth+15)+7, 0, buttonProjectWidth, 191)];
+        [projectButton setImage:[UIImage imageNamed:projectImage] forState:UIControlStateNormal];
+        [projectButton setImage:[UIImage imageNamed:projectImageHighlighted] forState:UIControlStateHighlighted];
+        projectButton.tag = i+2000; 
+        [projectButton addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+        [projectsNavScrollViewAR addSubview:projectButton];
+        [projectButton release];
+    }
+    
+    projectsNavScrollViewAR.hidden = YES;
+}
+
+- (void)insertProjectNavigation {
+    
+    [self insertProjectCategoryAll];
+    [self insertProjectCategoryTouch];  // hidden
+    [self insertProjectCategoryAR];     // hidden
+    
+    NSArray *itemArray = [NSArray arrayWithObjects: @"All", @"Touch", @"AR", nil];
+    UISegmentedControl *segmentedControlProjects = [[UISegmentedControl alloc] initWithItems:itemArray];
+    segmentedControlProjects.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControlProjects.tintColor = [UIColor grayColor];
+    segmentedControlProjects.selectedSegmentIndex = 0;
+    segmentedControlProjects.enabled = YES;
+    [segmentedControlProjects setCenter:CGPointMake(384, 470)];
+    
+    [segmentedControlProjects addTarget:self action:@selector(toggleProject:) forControlEvents:UIControlEventValueChanged];
+    
+    [childScrollViewThree addSubview:segmentedControlProjects];
+    [segmentedControlProjects release];
+    
+    /*
+    UIImageView *backgroundScrollViewProjects = [[UIImageView alloc] initWithFrame:CGRectMake(50,510, 641, 191)];
+    backgroundScrollViewProjects.image = [UIImage imageNamed:@"scrollbarProjectNav.png"];
+    [childScrollViewThree addSubview:backgroundScrollViewProjects];
+    [backgroundScrollViewProjects release];*/
+    
+}
+
+- (void)setupHorizontalView {
+	CGRect frameRect	= CGRectMake(50, 510, HORIZONTAL_TABLEVIEW_WIDTH, HORIZONTAL_TABLEVIEW_HEIGHT);
+	self.horizontalView	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:kNumberOfProjects ofWidth:HORIZONTAL_CELL_WIDTH];
+	
+	horizontalView.delegate						= self;
+	horizontalView.tableView.backgroundColor	= TABLE_BACKGROUND_COLOR;
+	horizontalView.tableView.allowsSelection	= YES;
+	horizontalView.tableView.separatorColor		= [[UIColor blackColor] colorWithAlphaComponent:0.2];
+	horizontalView.cellBackgroundColor			= [UIColor clearColor];
+	horizontalView.autoresizingMask				= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+	
+	[childScrollViewThree addSubview:horizontalView];
+	[horizontalView release];
+}
+
+- (void)toggleProject:(id)sender    {
+    CATransition *transition = [CATransition animation];
+	transition.duration = 0.75;
+	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	transition.type = kCATransitionFade;
+	transitioning = YES;
+	transition.delegate = self;
+	
+	// add it to the containerView's layer. This will perform the transition based on how we change its contents.
+	[childScrollViewThree.layer addAnimation:transition forKey:nil];
+    
+    int index = [sender selectedSegmentIndex];
+    
+    if (index == 0)
+    {
+        projectsNavScrollView.hidden = NO;
+        projectsNavScrollViewAR.hidden = YES;
+        projectsNavScrollViewTouch.hidden = YES;
+    }
+    else if (index == 1)
+    {
+        projectsNavScrollView.hidden = YES;
+        projectsNavScrollViewAR.hidden = NO;
+        projectsNavScrollViewTouch.hidden = YES;
+    }
+    else if (index == 2)
+    {
+        projectsNavScrollView.hidden = YES;
+        projectsNavScrollViewAR.hidden = YES;
+        projectsNavScrollViewTouch.hidden = NO;
+    }
 }
 
 - (void)insertButtonsIntoChildScrollView {
@@ -715,6 +889,10 @@ static NSUInteger pageControlOffsetTop = 820;
     [self setHome3:nil];
     
     self.projectsNavScrollView = nil;
+    self.projectsNavScrollViewTouch = nil;
+    self.projectsNavScrollViewAR = nil;
+    
+    self.horizontalView = nil;
 }
 
 - (void)dealloc {
@@ -739,6 +917,9 @@ static NSUInteger pageControlOffsetTop = 820;
     [locationManager release];
     [startingPoint release];
     [projectsNavScrollView release];
+    [projectsNavScrollViewTouch release];
+    [projectsNavScrollViewAR release];
+    [horizontalView release];
     
     [super dealloc];
 }
@@ -848,13 +1029,13 @@ static NSUInteger pageControlOffsetTop = 820;
    
 }
 
-// At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    pageControlUsed = NO;
+    
+    pageControlUsed = NO;   // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
 }
 
-// At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
     // -- reset frame if parent frame scrolls to a different tab
     
     if (scrollView == parentScrollView)
@@ -920,6 +1101,9 @@ static NSUInteger pageControlOffsetTop = 820;
         [childScrollViewThree scrollRectToVisible:frameChild animated:NO];
     else if (index == kSwitchesSegmentContact)
         [childScrollViewFour scrollRectToVisible:frameChild animated:NO];
+    
+   // UIColor *newSelectedTintColor = [UIColor colorWithRed: 0/255.0 green:175/255.0 blue:0/255.0 alpha:1.0];
+   // [[[segmentedControl subviews] objectAtIndex:index-1] setTintColor:newSelectedTintColor];
 
 }
 
@@ -1047,11 +1231,21 @@ static NSUInteger pageControlOffsetTop = 820;
 
 - (void)scrollToPage:(id)sender {
     // Button tags are used to determine which button is pressed and what scrollview needs to be moved
-    
+   
     UIButton *button = (UIButton *)sender;
+    
     CGRect frame = childScrollViewOne.frame;
     frame.origin.x = 0;
     frame.origin.y = 0;
+    
+    
+    if (button.tag == 802)                                              // EasyTableViewButton
+    {
+        int index = [button.currentTitle intValue];
+        frame.origin.x = frame.size.width*index;
+        
+        [childScrollViewThree scrollRectToVisible:frame animated:NO];
+    }
     
     if (button.tag == 997)                                              // Home Buttons
         [childScrollViewOne scrollRectToVisible:frame animated:NO];
@@ -1146,6 +1340,106 @@ static NSUInteger pageControlOffsetTop = 820;
         [locationManager stopUpdatingLocation];
         [locationManager startMonitoringSignificantLocationChanges];
     }
+}
+
+
+#pragma mark -
+#pragma mark Utility Methods
+
+- (void)borderIsSelected:(BOOL)selected forView:(UIView *)view {
+	UIImageView *borderView		= (UIImageView *)[view viewWithTag:BORDER_VIEW_TAG];
+	NSString *borderImageName	= (selected) ? @"selected_border.png" : @"image_border.png";
+	borderView.image			= [UIImage imageNamed:borderImageName];
+}
+
+
+
+#pragma mark -
+#pragma mark EasyTableViewDelegate
+
+// These delegate methods support both example views - first delegate method creates the necessary views
+
+- (UIView *)easyTableView:(EasyTableView *)easyTableView viewForRect:(CGRect)rect {
+	
+    CGRect buttonRect = CGRectMake(5,5, 185, 185);
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = buttonRect;
+    
+    /* 
+	// Choose background color of each cell
+	if (easyTableView == horizontalView)
+      button.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.3];
+	*/
+    
+	return button;
+}
+
+// Second delegate populates the views with data from a data source
+
+- (void)easyTableView:(EasyTableView *)easyTableView setDataForView:(UIView *)view forIndex:(NSUInteger)index {
+	/*
+    UILabel *label	= (UILabel *)view;
+	label.text		= [NSString stringWithFormat:@"%i", index];
+    */
+    
+    
+    UIButton *button = (UIButton *)view;
+    
+    NSLog(@"%i",index);
+    [button setTitle:[NSString stringWithFormat:@"%i", index+1] forState:UIControlStateNormal] ;
+   // [button setTitle:[NSString stringWithFormat:@"H%i", index+1] forState:UIControlStateHighlighted] ;
+    [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tile%i.png",index+1]] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tile%iH.png",index+1]] forState:UIControlStateHighlighted];
+    
+    button.titleLabel.hidden = YES;
+    /*
+    UIImageView *borderView		= [[UIImageView alloc] initWithFrame:button.bounds];
+	borderView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	borderView.tag				= BORDER_VIEW_TAG;
+    [button addSubview:borderView];
+    [borderView release];
+*/
+    /*
+    UIImageView *border = [[UIImageView alloc] initWithFrame:button.bounds];
+    border.image = [UIImage imageNamed:@"project_border.png"];
+    [button addSubview:border];
+    [border release];
+    */
+    
+    CGRect labelRect		= CGRectMake(0,145, 185, 40);
+    UILabel *label			= [[UILabel alloc] initWithFrame:labelRect];
+    label.textAlignment		= UITextAlignmentCenter;
+    label.textColor			= [UIColor whiteColor];
+    label.font              = [UIFont fontWithName:@"Helvetica" size:14.0f];
+    label.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.3];
+    label.text = [NSString stringWithFormat:@"Project %i", index+1];
+    [button addSubview:label];
+    [label release];
+                               
+    [button addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+    	
+    
+	// selectedIndexPath can be nil so we need to test for that condition
+	BOOL isSelected = (easyTableView.selectedIndexPath) ? (easyTableView.selectedIndexPath.row == index) : NO;
+	[self borderIsSelected:isSelected forView:view];		
+}
+
+// Optional - Tracks the selection of a particular cell
+
+- (void)easyTableView:(EasyTableView *)easyTableView selectedView:(UIView *)selectedView atIndex:(NSUInteger)index deselectedView:(UIView *)deselectedView {
+	[self borderIsSelected:YES forView:selectedView];		
+	
+    CGRect frame = childScrollViewThree.frame;
+    frame.origin.y = 0;
+    frame.origin.x = frame.size.width * index;
+    [childScrollViewThree scrollRectToVisible:frame animated:NO];
+    
+	if (deselectedView) 
+		[self borderIsSelected:NO forView:deselectedView];
+	
+    
+	UILabel *label	= (UILabel *)selectedView;
+	//bigLabel.text	= label.text;
 }
 
 @end

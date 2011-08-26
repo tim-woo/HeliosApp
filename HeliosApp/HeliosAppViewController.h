@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "EasyTableView.h"
 
 #define kSwitchesSegmentAbout      0
 #define kSwitchesSegmentTech       1
 #define kSwitchesSegmentProjects   2
 #define kSwitchesSegmentContact    3
 
-@interface HeliosAppViewController : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate>
+
+
+@interface HeliosAppViewController : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate, EasyTableViewDelegate>
 {    
     CLLocationManager *locationManager;
     CLLocation        *startingPoint;
@@ -52,7 +55,8 @@
 @property (nonatomic, retain) UIScrollView *childScrollViewThree;
 @property (nonatomic, retain) UIScrollView *childScrollViewFour;
 @property (nonatomic, retain) UIScrollView *projectsNavScrollView;
-
+@property (nonatomic, retain) UIScrollView *projectsNavScrollViewTouch;
+@property (nonatomic, retain) UIScrollView *projectsNavScrollViewAR;
 
 @property (nonatomic, retain) UIPageControl *pageControlOne;
 @property (nonatomic, retain) UIPageControl *pageControlTwo;
@@ -70,6 +74,8 @@
 @property (nonatomic, retain) UIButton *arrow1;
 @property (nonatomic, retain) UIButton *arrow2;
 @property (nonatomic, retain) UIButton *arrow3;
+
+@property (nonatomic, retain) EasyTableView *horizontalView;
 
 
 - (IBAction)toggleSwitch:(id) sender;
