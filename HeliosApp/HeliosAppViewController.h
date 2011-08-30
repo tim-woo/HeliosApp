@@ -57,11 +57,6 @@
 @property (nonatomic, retain) UIScrollView *childScrollViewThree;
 @property (nonatomic, retain) UIScrollView *childScrollViewFour;
 
-// delete
-@property (nonatomic, retain) UIScrollView *projectsNavScrollView;
-@property (nonatomic, retain) UIScrollView *projectsNavScrollViewTouch;
-@property (nonatomic, retain) UIScrollView *projectsNavScrollViewAR;
-
 @property (nonatomic, retain) UIPageControl *pageControlOne;
 @property (nonatomic, retain) UIPageControl *pageControlTwo;
 @property (nonatomic, retain) UIPageControl *pageControlThree;

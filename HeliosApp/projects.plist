@@ -13,8 +13,10 @@
 			<string>World Expo</string>
 			<key>navImage</key>
 			<string>navIntel.png</string>
-			<key>navImageHighlight</key>
+			<key>navHighlight</key>
 			<string>navIntelH.png</string>
+			<key>page</key>
+			<string>1</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -25,8 +27,10 @@
 			<string>Mini</string>
 			<key>navImage</key>
 			<string>navMerc.png</string>
-			<key>navImageHighlight</key>
+			<key>navHighlight</key>
 			<string>navMercH.png</string>
+			<key>page</key>
+			<string>2</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -37,8 +41,10 @@
 			<string>Nickelodeon</string>
 			<key>navImage</key>
 			<string>navYahoo.png</string>
-			<key>navImageHighlight</key>
+			<key>navHighlight</key>
 			<string>navYahooH.png</string>
+			<key>page</key>
+			<string>3</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -49,8 +55,10 @@
 			<string>Agilent</string>
 			<key>navImage</key>
 			<string>navCoraline.png</string>
-			<key>navImageHighlight</key>
+			<key>navHighlight</key>
 			<string>navCoralineH.png</string>
+			<key>page</key>
+			<string>4</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -60,9 +68,11 @@
 			<key>label</key>
 			<string>SalesForce</string>
 			<key>navImage</key>
-			<string>navMerc.png</string>
-			<key>navImageHighlight</key>
-			<string>navIntelH.png</string>
+			<string>navVH1.png</string>
+			<key>navHighlight</key>
+			<string>navVH1H.png</string>
+			<key>page</key>
+			<string>5</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -72,9 +82,11 @@
 			<key>label</key>
 			<string>Disney</string>
 			<key>navImage</key>
-			<string>navMerc.png</string>
-			<key>navImageHighlight</key>
-			<string>navIntelH.png</string>
+			<string>navNavy.png</string>
+			<key>navHighlight</key>
+			<string>navNavyH.png</string>
+			<key>page</key>
+			<string>6</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -84,9 +96,11 @@
 			<key>label</key>
 			<string>Apple</string>
 			<key>navImage</key>
-			<string>navMerc.png</string>
-			<key>navImageHighlight</key>
-			<string>navIntelH.png</string>
+			<string>navSprint.png</string>
+			<key>navHighlight</key>
+			<string>navSprintH.png</string>
+			<key>page</key>
+			<string>7</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -96,253 +110,132 @@
 			<key>label</key>
 			<string>Google</string>
 			<key>navImage</key>
-			<string>navMerc.png</string>
-			<key>navImageHighlight</key>
-			<string>navIntelH.png</string>
-		</dict>
-	</array>
-	<key>all - delete</key>
-	<array>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Nickelodeon</string>
+			<string>navVampire.png</string>
+			<key>navHighlight</key>
+			<string>navVampireH.png</string>
+			<key>page</key>
+			<string>8</string>
 		</dict>
 	</array>
 	<key>ar</key>
 	<array>
 		<dict>
 			<key>image</key>
-			<string></string>
+			<string>tile5.png</string>
 			<key>highlight</key>
-			<string></string>
+			<string>tile4.png</string>
+			<key>label</key>
+			<string>Google</string>
+			<key>navImage</key>
+			<string>navVampire.png</string>
+			<key>navHighlight</key>
+			<string>navVampireH.png</string>
+			<key>page</key>
+			<string>8</string>
+		</dict>
+		<dict>
+			<key>image</key>
+			<string>tile4.png</string>
+			<key>highlight</key>
+			<string>tile4H.png</string>
+			<key>label</key>
+			<string>Agilent</string>
+			<key>navImage</key>
+			<string>navCoraline.png</string>
+			<key>navHighlight</key>
+			<string>navCoralineH.png</string>
+			<key>page</key>
+			<string>4</string>
+		</dict>
+		<dict>
+			<key>image</key>
+			<string>tile3.png</string>
+			<key>highlight</key>
+			<string>tile3H.png</string>
 			<key>label</key>
 			<string>Nickelodeon</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>Mini</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>World Expo</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>World Expo</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>World Expo</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>World Expo</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string></string>
-			<key>highlight</key>
-			<string></string>
-			<key>label</key>
-			<string>World Expo</string>
+			<key>navImage</key>
+			<string>navYahoo.png</string>
+			<key>navHighlight</key>
+			<string>navYahooH.png</string>
+			<key>page</key>
+			<string>3</string>
 		</dict>
 	</array>
 	<key>touch</key>
 	<array>
 		<dict>
 			<key>image</key>
-			<string>tile4H.png</string>
+			<string>tile5.png</string>
 			<key>highlight</key>
-			<string>tile3.png</string>
+			<string>tile5H.png</string>
 			<key>label</key>
-			<string>Disney</string>
+			<string>SalesForce</string>
+			<key>navImage</key>
+			<string>navVH1.png</string>
+			<key>navHighlight</key>
+			<string>navVH1H.png</string>
+			<key>page</key>
+			<string>5</string>
 		</dict>
 		<dict>
 			<key>image</key>
-			<string>tile4H.png</string>
+			<string>tile2.png</string>
 			<key>highlight</key>
-			<string>tile3.png</string>
+			<string>tile2H.png</string>
 			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
+			<string>Mini</string>
+			<key>navImage</key>
+			<string>navMerc.png</string>
+			<key>navHighlight</key>
+			<string>navMercH.png</string>
+			<key>page</key>
+			<string>2</string>
 		</dict>
 	</array>
 	<key>tracking</key>
 	<array>
 		<dict>
 			<key>image</key>
-			<string>tile4H.png</string>
+			<string>tile5.png</string>
 			<key>highlight</key>
-			<string>tile3.png</string>
+			<string>tile4.png</string>
 			<key>label</key>
-			<string>Disney</string>
+			<string>Google</string>
+			<key>navImage</key>
+			<string>navVampire.png</string>
+			<key>navHighlight</key>
+			<string>navVampireH.png</string>
+			<key>page</key>
+			<string>8</string>
 		</dict>
 		<dict>
 			<key>image</key>
-			<string>tile4H.png</string>
+			<string>tile5.png</string>
 			<key>highlight</key>
-			<string>tile3.png</string>
+			<string>tile1H.png</string>
 			<key>label</key>
-			<string>Disney</string>
+			<string>Apple</string>
+			<key>navImage</key>
+			<string>navSprint.png</string>
+			<key>navHighlight</key>
+			<string>navSprintH.png</string>
+			<key>page</key>
+			<string>7</string>
 		</dict>
 		<dict>
 			<key>image</key>
-			<string>tile4H.png</string>
+			<string>tile4.png</string>
 			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
 			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
 			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
-		</dict>
-		<dict>
-			<key>image</key>
-			<string>tile4H.png</string>
-			<key>highlight</key>
-			<string>tile3.png</string>
-			<key>label</key>
-			<string>Disney</string>
+			<string>Agilent</string>
+			<key>navImage</key>
+			<string>navCoraline.png</string>
+			<key>navHighlight</key>
+			<string>navCoralineH.png</string>
+			<key>page</key>
+			<string>4</string>
 		</dict>
 	</array>
 </dict>
