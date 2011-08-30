@@ -88,6 +88,11 @@ static NSUInteger pageControlOffsetTop = 820;
 - (void)playPressed:(UIButton *)button;
 - (void)setupHorizontalView;
 - (void)setupVerticalView;
+-(void)nextTransition:(id)sender;
+- (EasyTableView *)initVerticalViewWithNumberProjects:(int)numberOfProjects;
+- (void)switchVerticalView:(id)sender;
+
+
 
 /*- (void)cleanScrollView:(UIScrollView *)scrollView 
           AtCurrentPage:(int)currentPage 
@@ -102,7 +107,7 @@ static NSUInteger pageControlOffsetTop = 820;
 
 @synthesize segmentedControl, parentScrollView, childScrollViewOne, childScrollViewTwo, childScrollViewThree, childScrollViewFour,
             pageControlOne,pageControlTwo, pageControlThree, imageViewsAbout, imageViewsTech, imageViewsProjects, imageViewsContact,
-            home1,home2,home3, locationManager,startingPoint,arrow1,arrow2,arrow3, projectsNavScrollView, projectsNavScrollViewTouch, projectsNavScrollViewAR, horizontalView, projects, projectNavView, verticalView1,verticalView2,verticalView3,verticalView4,projectsAR,projectsAll,projectsTouch,projectsTracking;
+            home1,home2,home3, locationManager,startingPoint,arrow1,arrow2,arrow3, projectsNavScrollView, projectsNavScrollViewTouch, projectsNavScrollViewAR, horizontalView, projectNavView, verticalView1,verticalView2,verticalView3,verticalView4,projectsAR,projectsAll,projectsTouch,projectsTracking, buttonAR, buttonTracking, buttonAll, buttonTouch;
 
 #pragma mark -
 #pragma mark Private Methods
@@ -273,13 +278,56 @@ static NSUInteger pageControlOffsetTop = 820;
         
     transitioning = NO;
     
-    UIButton *navBack = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 130, 40)];
+    UIButton *navBack = [[UIButton alloc] initWithFrame:CGRectMake(15, 0, 60, 40)];
     [navBack setImage:[UIImage imageNamed:@"buttonNavBack.png"] forState:UIControlStateNormal];
     [navBack setImage:[UIImage imageNamed:@"buttonNavBackH.png"] forState:UIControlStateHighlighted];
     [navBack addTarget:self action:@selector(nextTransition:) forControlEvents:UIControlEventTouchUpInside];
     [projectNavView addSubview:navBack];
     [navBack release];
 
+    UIButton *buttonAlltemp = [[UIButton alloc] initWithFrame:CGRectMake(50, 120, 160, 35)];
+    [buttonAlltemp setImage:[UIImage imageNamed:@"buttonAll.png"] forState:UIControlStateNormal];
+    [buttonAlltemp setImage:[UIImage imageNamed:@"buttonAllH.png"] forState:UIControlStateHighlighted];
+    [buttonAlltemp setImage:[UIImage imageNamed:@"buttonAllH.png"] forState:UIControlStateDisabled];
+    [buttonAlltemp addTarget:self action:@selector(switchVerticalView:) forControlEvents:UIControlEventTouchUpInside];
+    buttonAlltemp.tag = 11111;
+    buttonAlltemp.enabled = NO;
+    self.buttonAll = buttonAlltemp;
+    [projectNavView addSubview:buttonAll];
+    [buttonAlltemp release];
+    
+    UIButton *buttonTouchTemp = [[UIButton alloc] initWithFrame:CGRectMake(210, 120, 160, 35)];
+    [buttonTouchTemp setImage:[UIImage imageNamed:@"buttonTouchInterface.png"] forState:UIControlStateNormal];
+    [buttonTouchTemp setImage:[UIImage imageNamed:@"buttonTouchInterfaceH.png"] forState:UIControlStateHighlighted];
+    [buttonTouchTemp setImage:[UIImage imageNamed:@"buttonTouchInterfaceH.png"] forState:UIControlStateDisabled];
+    [buttonTouchTemp addTarget:self action:@selector(switchVerticalView:) forControlEvents:UIControlEventTouchUpInside];
+    buttonTouchTemp.tag = 11112;
+    self.buttonTouch = buttonTouchTemp;
+    [projectNavView addSubview:buttonTouch];
+    [buttonTouchTemp release];
+    
+    UIButton *buttonARTemp = [[UIButton alloc] initWithFrame:CGRectMake(370, 120, 160, 35)];
+    [buttonARTemp setImage:[UIImage imageNamed:@"buttonAugmented.png"] forState:UIControlStateNormal];
+    [buttonARTemp setImage:[UIImage imageNamed:@"buttonAugmentedH.png"] forState:UIControlStateHighlighted];
+    [buttonARTemp setImage:[UIImage imageNamed:@"buttonAugmentedH.png"] forState:UIControlStateDisabled];
+
+    [buttonARTemp addTarget:self action:@selector(switchVerticalView:) forControlEvents:UIControlEventTouchUpInside];
+    buttonARTemp.tag = 11113;
+    self.buttonAR = buttonARTemp;
+    [projectNavView addSubview:buttonAR];
+    [buttonARTemp release];
+    
+    UIButton *buttonTrack = [[UIButton alloc] initWithFrame:CGRectMake(530, 120, 160, 35)];
+    [buttonTrack setImage:[UIImage imageNamed:@"buttonTracking.png"] forState:UIControlStateNormal];
+    [buttonTrack setImage:[UIImage imageNamed:@"buttonTrackingH.png"] forState:UIControlStateHighlighted];
+    [buttonTrack setImage:[UIImage imageNamed:@"buttonTrackingH.png"] forState:UIControlStateDisabled];
+
+    [buttonTrack addTarget:self action:@selector(switchVerticalView:) forControlEvents:UIControlEventTouchUpInside];
+    buttonTrack.tag = 11114;
+    self.buttonTracking = buttonTrack;
+    [projectNavView addSubview:buttonTracking];
+    [buttonTrack release];
+    
     [self setupVerticalView];
     
     projectNavView.hidden = YES;
@@ -287,14 +335,47 @@ static NSUInteger pageControlOffsetTop = 820;
 
     [tabThree addSubview:projectNavView];
     
-    
-    
-    
     // Inserts project nav into tab three
     //[self insertProjectNavigation];   
     
     [self setupHorizontalView];
 
+}
+
+- (void)switchVerticalView:(id)sender {
+    
+    UIButton *button = (UIButton *)sender;
+    
+    buttonAll.enabled = YES;
+    buttonAR.enabled = YES;
+    buttonTouch.enabled = YES;
+    buttonTracking.enabled = YES;
+    
+    verticalView1.hidden = YES;
+    verticalView2.hidden = YES;
+    verticalView3.hidden = YES;
+    verticalView4.hidden = YES;
+
+    if (button.tag == 11111)
+    {
+        verticalView1.hidden = NO;
+        buttonAll.enabled = NO;
+    }
+    else if (button.tag == 11112)
+    {
+        verticalView2.hidden = NO;
+        buttonTouch.enabled = NO;
+    }
+    else if (button.tag == 11113)
+    {
+        verticalView3.hidden = NO;
+        buttonAR.enabled = NO;
+    }
+    else
+    {
+        verticalView4.hidden = NO;
+        buttonTracking.enabled = NO;
+    }
 }
 
 - (void)insertContentIntoTabFour:(UIView *)tabFour  {
@@ -521,7 +602,7 @@ static NSUInteger pageControlOffsetTop = 820;
 
 - (void)setupHorizontalView {
     
-    int kNumberOfProjects = [self.projects count];
+    int kNumberOfProjects = [self.projectsAll count];
 
 	CGRect frameRect	= CGRectMake(50, 510, HORIZONTAL_TABLEVIEW_WIDTH, HORIZONTAL_TABLEVIEW_HEIGHT);
 	self.horizontalView	= [[EasyTableView alloc] initWithFrame:frameRect numberOfColumns:kNumberOfProjects ofWidth:HORIZONTAL_CELL_WIDTH];
@@ -537,24 +618,54 @@ static NSUInteger pageControlOffsetTop = 820;
 	[horizontalView release];
 }
 
-- (void)setupVerticalView {
-    int kNumberOfProjects = [self.projects count];
 
-	CGRect frameRect	= CGRectMake(50, 160, VERTICAL_TABLEVIEW_WIDTH, VERTICAL_TABLEVIEW_HEIGHT);
-	self.verticalView1	= [[EasyTableView alloc] initWithFrame:frameRect numberOfRows:kNumberOfProjects ofHeight:VERTICAL_CELL_HEIGHT];
+- (EasyTableView *)initVerticalViewWithNumberProjects:(int)numberOfProjects
+{
+    CGRect frameRect	= CGRectMake(50, 160, VERTICAL_TABLEVIEW_WIDTH, VERTICAL_TABLEVIEW_HEIGHT);
+	EasyTableView *table = [[EasyTableView alloc] initWithFrame:frameRect numberOfRows:numberOfProjects ofHeight:VERTICAL_CELL_HEIGHT];
 	
-	verticalView1.delegate					= self;
-	verticalView1.tableView.backgroundColor	= [UIColor clearColor];
-	verticalView1.tableView.allowsSelection	= YES;
-	verticalView1.tableView.separatorColor	= [[UIColor whiteColor] colorWithAlphaComponent:0.3];
-	verticalView1.cellBackgroundColor		= [UIColor clearColor];
-	verticalView1.autoresizingMask			= UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	
-	// Allow verticalView to scroll up and completely clear the horizontalView
-	verticalView1.tableView.contentInset		= UIEdgeInsetsMake(0, 0, HORIZONTAL_TABLEVIEW_HEIGHT, 0);
-	
+	table.delegate					= self;
+	table.tableView.backgroundColor	= [UIColor clearColor];
+	table.tableView.allowsSelection	= YES;
+	table.tableView.separatorColor	= [[UIColor whiteColor] colorWithAlphaComponent:0.3];
+	table.cellBackgroundColor		= [UIColor clearColor];
+	table.autoresizingMask			= UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    // Allow verticalView to scroll up and completely clear the horizontalView
+	table.tableView.contentInset		= UIEdgeInsetsMake(5, 0, 0, 0);
+    
+    return table;
+}
+
+- (void)setupVerticalView {
+    int kNumberOfProjects = [self.projectsAll count];
+    int kNumberOfProjectsTouch = [self.projectsTouch count];
+    int kNumberOfProjectsAR = [self.projectsAR count];
+    int kNumberOfProjectsTracking = [self.projectsTracking count];
+    
+    EasyTableView *table = [self initVerticalViewWithNumberProjects:kNumberOfProjects];
+    self.verticalView1 = table;
 	[projectNavView addSubview:verticalView1];
-	[verticalView1 release];
+	//[verticalView1 release];
+    [table release];
+    
+    EasyTableView *table2 = [self initVerticalViewWithNumberProjects:kNumberOfProjectsTouch];
+    self.verticalView2 = table2;
+    verticalView2.hidden = YES;
+	[projectNavView addSubview:verticalView2];
+    [table2 release];
+    
+    EasyTableView *table3 = [self initVerticalViewWithNumberProjects:kNumberOfProjectsAR];
+    self.verticalView3 = table3;
+    verticalView3.hidden = YES;
+	[projectNavView addSubview:verticalView3];
+    [table3 release];
+    
+    EasyTableView *table4 = [self initVerticalViewWithNumberProjects:kNumberOfProjectsTracking];
+    self.verticalView4 = table4;
+    verticalView4.hidden = YES;
+	[projectNavView addSubview:verticalView4];
+    [table4 release];
 }
 /*
 - (void)toggleProject:(id)sender    {
@@ -612,7 +723,7 @@ static NSUInteger pageControlOffsetTop = 820;
     [childScrollViewTwo addSubview:arrow2];
     [arrowTemp2 release];
     
-    UIButton *arrowTemp3 = [[UIButton alloc] initWithFrame:CGRectMake(354, 420, 30, 20)];
+    UIButton *arrowTemp3 = [[UIButton alloc] initWithFrame:CGRectMake(354, 380, 30, 20)];
     [arrowTemp3 setImage:[UIImage imageNamed:@"buttonArrow.png"] forState:UIControlStateNormal];
     [arrowTemp3 setImage:[UIImage imageNamed:@"buttonArrowH.png"] forState:UIControlStateHighlighted];
     arrowTemp3.tag = 152;
@@ -881,13 +992,13 @@ static NSUInteger pageControlOffsetTop = 820;
     // create the dictionary of projects
     NSString *path = [[NSBundle mainBundle] pathForResource:@"projects" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-    self.projects = [dict objectForKey:@"projects"];
+    //self.projects = [dict objectForKey:@"projects"];
     self.projectsAll = [dict objectForKey:@"all"];
     self.projectsAR = [dict objectForKey:@"ar"];
     self.projectsTouch = [dict objectForKey:@"touch"];
     self.projectsTracking = [dict objectForKey:@"tracking"];
 
-    kNumberOfPagesTabThree = [self.projects count] + 1;     // total pages = #projects + intro page
+    kNumberOfPagesTabThree = [self.projectsAll count] + 1;     // total pages = #projects + intro page
     
     [self insertLocationManager];
     
@@ -929,7 +1040,7 @@ static NSUInteger pageControlOffsetTop = 820;
     self.projectsNavScrollViewAR = nil;
     
     self.horizontalView = nil;
-    self.projects = nil;
+ //   self.projects = nil;
     self.projectNavView = nil;
     
     self.verticalView1 = nil;
@@ -941,6 +1052,11 @@ static NSUInteger pageControlOffsetTop = 820;
     self.projectsAR = nil;
     self.projectsTouch = nil;
     self.projectsTracking = nil;
+    
+    self.buttonTracking = nil;
+    self.buttonTouch = nil;
+    self.buttonAR = nil;
+    self.buttonAll = nil;
 }
 
 - (void)dealloc {
@@ -968,7 +1084,7 @@ static NSUInteger pageControlOffsetTop = 820;
     [projectsNavScrollViewTouch release];
     [projectsNavScrollViewAR release];
     [horizontalView release];
-    [projects release];
+ //   [projects release];
     [projectNavView release];
     [verticalView1 release];
     [verticalView2 release];
@@ -978,6 +1094,10 @@ static NSUInteger pageControlOffsetTop = 820;
     [projectsTracking release];
     [projectsAR release];
     [projectsAll release];
+    [buttonAll release];
+    [buttonAR release];
+    [buttonTouch release];
+    [buttonTracking release];
     
     [super dealloc];
 }
@@ -1102,6 +1222,10 @@ static NSUInteger pageControlOffsetTop = 820;
         frame.origin.x = 0;
         frame.origin.y = 0;
         
+        // resets project intro page from nav page 
+        if (childScrollViewThree.hidden == YES && parentScrollView.contentOffset.y != 2*parentScrollHeight  )        
+            [self nextTransition:nil];
+        
         if (parentScrollView.contentOffset.y == 0)
         {
             segmentedControl.selectedSegmentIndex = kSwitchesSegmentAbout;
@@ -1160,6 +1284,12 @@ static NSUInteger pageControlOffsetTop = 820;
     else if (index == kSwitchesSegmentContact)
         [childScrollViewFour scrollRectToVisible:frameChild animated:NO];
     
+    if (childScrollViewThree.hidden == YES)
+        [self nextTransition:nil];
+    
+    pageControlOne.currentPage = 0;
+    pageControlTwo.currentPage = 0;
+    pageControlThree.currentPage = 0;
    // UIColor *newSelectedTintColor = [UIColor colorWithRed: 0/255.0 green:175/255.0 blue:0/255.0 alpha:1.0];
    // [[[segmentedControl subviews] objectAtIndex:index-1] setTintColor:newSelectedTintColor];
 
@@ -1236,7 +1366,7 @@ static NSUInteger pageControlOffsetTop = 820;
 -(void)performTransition
 {
 	CATransition *transition = [CATransition animation];
-	transition.duration = 0.75;
+	transition.duration = 0.50;
 	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 	transition.type = kCATransitionFade;
 	transitioning = YES;
@@ -1244,13 +1374,14 @@ static NSUInteger pageControlOffsetTop = 820;
 	
 	// add it to the containerView's layer. This will perform the transition based on how we change its contents.
 	[childScrollViewThree.layer addAnimation:transition forKey:nil];
+    [projectNavView.layer addAnimation:transition forKey:nil];
 	
 	if (projectNavView.hidden == YES)
     {
         childScrollViewThree.hidden = YES;
         pageControlThree.hidden = YES;
         //segmentedControl.hidden = YES;
-        //parentScrollView.scrollEnabled = NO;
+        parentScrollView.scrollEnabled = NO;
         //home1.hidden = YES;
         //home2.hidden = YES;
         home3.hidden = YES;
@@ -1265,7 +1396,7 @@ static NSUInteger pageControlOffsetTop = 820;
         childScrollViewThree.hidden = NO;
         pageControlThree.hidden = NO;
         //segmentedControl.hidden = NO;
-        //parentScrollView.scrollEnabled = YES;
+        parentScrollView.scrollEnabled = YES;
         //home1.hidden = NO;
         //home2.hidden = NO;
         home3.hidden = NO;
@@ -1307,13 +1438,18 @@ static NSUInteger pageControlOffsetTop = 820;
             [self nextTransition:self];
         }
     }
-    else if (button.tag == 997)                                              // Home Buttons
+    else if (button.tag == 997)   {                                           // Home Buttons
         [childScrollViewOne scrollRectToVisible:frame animated:NO];
-    else if (button.tag == 998)
+        pageControlOne.currentPage = 0;
+    }
+    else if (button.tag == 998) {
         [childScrollViewTwo scrollRectToVisible:frame animated:NO];
-    else if (button.tag == 999)
+        pageControlTwo.currentPage = 0;
+    }
+    else if (button.tag == 999) {
         [childScrollViewThree scrollRectToVisible:frame animated:NO];
-    
+        pageControlThree.currentPage = 0;
+    }
     else if (button.tag == 150)                                         // Arrow Buttons
     {
         frame.origin.x = frame.size.width;
@@ -1445,7 +1581,7 @@ static NSUInteger pageControlOffsetTop = 820;
 
     if (easyTableView == horizontalView)
     {
-        NSDictionary *project = [self.projects objectAtIndex:index];
+        NSDictionary *project = [self.projectsAll objectAtIndex:index];
         
         UIButton *button = (UIButton *)view;
         NSLog(@"The button is %@",button);
@@ -1458,16 +1594,60 @@ static NSUInteger pageControlOffsetTop = 820;
                 
         [button addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else
+    else if (easyTableView == verticalView1)
     {
         NSDictionary *navAll = [self.projectsAll objectAtIndex:index];
         UIButton *button = (UIButton *)view;
         
         [button setTitle:[NSString stringWithFormat:@"%i", index+1] forState:UIControlStateNormal] ;
-        [button setImage:[UIImage imageNamed:[navAll objectForKey:@"image"]] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:[navAll objectForKey:@"highlight"]] forState:UIControlStateHighlighted];
+        [button setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+
+        [button setImage:[UIImage imageNamed:[navAll objectForKey:@"navImage"]] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:[navAll objectForKey:@"navHighlight"]] forState:UIControlStateHighlighted];
         
         [button addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else if (easyTableView == verticalView2)
+    {
+        NSDictionary *navTouch = [self.projectsTouch objectAtIndex:index];
+        UIButton *button = (UIButton *)view;
+        
+        [button setTitle:[NSString stringWithFormat:@"%i", index+1] forState:UIControlStateNormal] ;
+        [button setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+        
+        [button setImage:[UIImage imageNamed:[navTouch objectForKey:@"navImage"]] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:[navTouch objectForKey:@"navHighlight"]] forState:UIControlStateHighlighted];
+        
+        [button addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+
+    }
+    else if (easyTableView == verticalView3)
+    {
+        NSDictionary *navAR = [self.projectsAR objectAtIndex:index];
+        UIButton *button = (UIButton *)view;
+        
+        [button setTitle:[NSString stringWithFormat:@"%i", index+1] forState:UIControlStateNormal] ;
+        [button setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+
+        [button setImage:[UIImage imageNamed:[navAR objectForKey:@"navImage"]] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:[navAR objectForKey:@"navHighlight"]] forState:UIControlStateHighlighted];
+
+        [button addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+
+    }
+    else // easytableview == verticalview4
+    {
+        NSDictionary *navTracking = [self.projectsTracking objectAtIndex:index];
+        UIButton *button = (UIButton *)view;
+        
+        [button setTitle:[NSString stringWithFormat:@"%i", index+1] forState:UIControlStateNormal] ;
+        [button setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+
+        [button setImage:[UIImage imageNamed:[navTracking objectForKey:@"navImage"]] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:[navTracking objectForKey:@"navHighlight"]] forState:UIControlStateHighlighted];
+
+        [button addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+
     }
     
 	// selectedIndexPath can be nil so we need to test for that condition

@@ -56,6 +56,8 @@
 @property (nonatomic, retain) UIScrollView *childScrollViewTwo;
 @property (nonatomic, retain) UIScrollView *childScrollViewThree;
 @property (nonatomic, retain) UIScrollView *childScrollViewFour;
+
+// delete
 @property (nonatomic, retain) UIScrollView *projectsNavScrollView;
 @property (nonatomic, retain) UIScrollView *projectsNavScrollViewTouch;
 @property (nonatomic, retain) UIScrollView *projectsNavScrollViewAR;
@@ -84,11 +86,17 @@
 @property (nonatomic, retain) EasyTableView *verticalView4;
 
 
-@property (nonatomic, retain) NSArray *projects;
+//@property (nonatomic, retain) NSArray *projects;
 @property (nonatomic, retain) NSArray *projectsAll;
 @property (nonatomic, retain) NSArray *projectsTouch;
 @property (nonatomic, retain) NSArray *projectsAR;
 @property (nonatomic, retain) NSArray *projectsTracking;
+
+@property (nonatomic, retain) UIButton *buttonAll;
+@property (nonatomic, retain) UIButton *buttonTouch;
+@property (nonatomic, retain) UIButton *buttonAR;
+@property (nonatomic, retain) UIButton *buttonTracking;
+
 
 
 - (IBAction)toggleSwitch:(id) sender;
