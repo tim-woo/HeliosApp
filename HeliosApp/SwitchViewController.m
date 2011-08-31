@@ -7,7 +7,7 @@
 //
 
 #import "SwitchViewController.h"
-#import "HeliosAppViewController.h"
+#import "HeliosViewController.h"
 #import "GridViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad
 {
-    HeliosAppViewController *helioController = [[HeliosAppViewController alloc]
+    HeliosViewController *helioController = [[HeliosViewController alloc]
                                                 initWithNibName:@"HeliosAppViewController" bundle:nil];
     self.heliosAppViewController = helioController;
     [self.view insertSubview:helioController.view atIndex:0];
@@ -113,8 +113,8 @@
 		{
             NSLog(@"Creating heliosviewcontroller");
 
-			HeliosAppViewController *helioController =
-			[[HeliosAppViewController alloc] initWithNibName:@"HeliosAppViewController"
+			HeliosViewController *helioController =
+			[[HeliosViewController alloc] initWithNibName:@"HeliosAppViewController"
                                                       bundle:nil];
 			self.heliosAppViewController = helioController;
 			[helioController release];

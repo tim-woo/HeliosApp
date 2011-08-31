@@ -15,6 +15,13 @@
 		D50E5185140D7A1E0053B345 /* navSprintH.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E517F140D7A1D0053B345 /* navSprintH.png */; };
 		D50E5186140D7A1E0053B345 /* navVampire.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E5180140D7A1D0053B345 /* navVampire.png */; };
 		D50E5187140D7A1E0053B345 /* navVampireH.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E5181140D7A1D0053B345 /* navVampireH.png */; };
+		D50E518B140DAC4F0053B345 /* project8.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E5188140DAC4E0053B345 /* project8.png */; };
+		D50E518C140DAC4F0053B345 /* project9.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E5189140DAC4E0053B345 /* project9.png */; };
+		D50E5192140DB1200053B345 /* navExpo.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E518E140DB1200053B345 /* navExpo.png */; };
+		D50E5193140DB1200053B345 /* navExpoH.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E518F140DB1200053B345 /* navExpoH.png */; };
+		D50E5194140DB1200053B345 /* navMini.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E5190140DB1200053B345 /* navMini.png */; };
+		D50E5195140DB1200053B345 /* navMiniH.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E5191140DB1200053B345 /* navMiniH.png */; };
+		D50E5197140DB2E70053B345 /* project10.png in Resources */ = {isa = PBXBuildFile; fileRef = D50E5196140DB2E60053B345 /* project10.png */; };
 		D50EF24D140C305B00D7C0DA /* buttonAll.png in Resources */ = {isa = PBXBuildFile; fileRef = D50EF24B140C305B00D7C0DA /* buttonAll.png */; };
 		D50EF24E140C305B00D7C0DA /* buttonAllH.png in Resources */ = {isa = PBXBuildFile; fileRef = D50EF24C140C305B00D7C0DA /* buttonAllH.png */; };
 		D50EF256140C307600D7C0DA /* buttonAugmented.png in Resources */ = {isa = PBXBuildFile; fileRef = D50EF250140C307600D7C0DA /* buttonAugmented.png */; };
@@ -36,10 +43,10 @@
 		D518B23713F31773003B93CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D518B23613F31773003B93CA /* CoreGraphics.framework */; };
 		D518B23D13F31773003B93CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D518B23B13F31773003B93CA /* InfoPlist.strings */; };
 		D518B23F13F31773003B93CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D518B23E13F31773003B93CA /* main.m */; };
-		D518B24313F31773003B93CA /* HeliosAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D518B24213F31773003B93CA /* HeliosAppAppDelegate.m */; };
+		D518B24313F31773003B93CA /* HeliosAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D518B24213F31773003B93CA /* HeliosAppDelegate.m */; };
 		D518B24613F31773003B93CA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D518B24413F31773003B93CA /* MainWindow.xib */; };
-		D518B24913F31773003B93CA /* HeliosAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D518B24813F31773003B93CA /* HeliosAppViewController.m */; };
-		D518B24C13F31773003B93CA /* HeliosAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D518B24A13F31773003B93CA /* HeliosAppViewController.xib */; };
+		D518B24913F31773003B93CA /* HeliosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D518B24813F31773003B93CA /* HeliosViewController.m */; };
+		D518B24C13F31773003B93CA /* HeliosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D518B24A13F31773003B93CA /* HeliosViewController.xib */; };
 		D518B26213F3178D003B93CA /* glass.png in Resources */ = {isa = PBXBuildFile; fileRef = D518B25713F3178D003B93CA /* glass.png */; };
 		D518B26913F317EF003B93CA /* icon-black.png in Resources */ = {isa = PBXBuildFile; fileRef = D518B26813F317EF003B93CA /* icon-black.png */; };
 		D518B26B13F31801003B93CA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D518B26A13F31801003B93CA /* Default-Portrait~ipad.png */; };
@@ -145,6 +152,13 @@
 		D50E517F140D7A1D0053B345 /* navSprintH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navSprintH.png; sourceTree = "<group>"; };
 		D50E5180140D7A1D0053B345 /* navVampire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navVampire.png; sourceTree = "<group>"; };
 		D50E5181140D7A1D0053B345 /* navVampireH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navVampireH.png; sourceTree = "<group>"; };
+		D50E5188140DAC4E0053B345 /* project8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project8.png; sourceTree = "<group>"; };
+		D50E5189140DAC4E0053B345 /* project9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project9.png; sourceTree = "<group>"; };
+		D50E518E140DB1200053B345 /* navExpo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navExpo.png; sourceTree = "<group>"; };
+		D50E518F140DB1200053B345 /* navExpoH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navExpoH.png; sourceTree = "<group>"; };
+		D50E5190140DB1200053B345 /* navMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navMini.png; sourceTree = "<group>"; };
+		D50E5191140DB1200053B345 /* navMiniH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navMiniH.png; sourceTree = "<group>"; };
+		D50E5196140DB2E60053B345 /* project10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project10.png; sourceTree = "<group>"; };
 		D50EF24B140C305B00D7C0DA /* buttonAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonAll.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonAll.png"; sourceTree = "<group>"; };
 		D50EF24C140C305B00D7C0DA /* buttonAllH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonAllH.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonAllH.png"; sourceTree = "<group>"; };
 		D50EF250140C307600D7C0DA /* buttonAugmented.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonAugmented.png; path = "../../../Desktop/HELIOS/iPad Application/Buttons/buttonAugmented.png"; sourceTree = "<group>"; };
@@ -169,12 +183,12 @@
 		D518B23C13F31773003B93CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D518B23E13F31773003B93CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D518B24013F31773003B93CA /* HeliosApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeliosApp-Prefix.pch"; sourceTree = "<group>"; };
-		D518B24113F31773003B93CA /* HeliosAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeliosAppAppDelegate.h; sourceTree = "<group>"; };
-		D518B24213F31773003B93CA /* HeliosAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeliosAppAppDelegate.m; sourceTree = "<group>"; };
+		D518B24113F31773003B93CA /* HeliosAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeliosAppDelegate.h; sourceTree = "<group>"; };
+		D518B24213F31773003B93CA /* HeliosAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeliosAppDelegate.m; sourceTree = "<group>"; };
 		D518B24513F31773003B93CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		D518B24713F31773003B93CA /* HeliosAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeliosAppViewController.h; sourceTree = "<group>"; };
-		D518B24813F31773003B93CA /* HeliosAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeliosAppViewController.m; sourceTree = "<group>"; };
-		D518B24B13F31773003B93CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/HeliosAppViewController.xib; sourceTree = "<group>"; };
+		D518B24713F31773003B93CA /* HeliosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeliosViewController.h; sourceTree = "<group>"; };
+		D518B24813F31773003B93CA /* HeliosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeliosViewController.m; sourceTree = "<group>"; };
+		D518B24B13F31773003B93CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/HeliosViewController.xib; sourceTree = "<group>"; };
 		D518B25713F3178D003B93CA /* glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glass.png; sourceTree = "<group>"; };
 		D518B26813F317EF003B93CA /* icon-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-black.png"; sourceTree = "<group>"; };
 		D518B26A13F31801003B93CA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -371,12 +385,12 @@
 			children = (
 				D589F6451406DEC900598956 /* EasyTableView.h */,
 				D589F6461406DECA00598956 /* EasyTableView.m */,
-				D518B24113F31773003B93CA /* HeliosAppAppDelegate.h */,
-				D518B24213F31773003B93CA /* HeliosAppAppDelegate.m */,
+				D518B24113F31773003B93CA /* HeliosAppDelegate.h */,
+				D518B24213F31773003B93CA /* HeliosAppDelegate.m */,
 				D58F612B13F5A0C00081CE9C /* SwitchViewController.h */,
 				D58F612C13F5A0C00081CE9C /* SwitchViewController.m */,
-				D518B24713F31773003B93CA /* HeliosAppViewController.h */,
-				D518B24813F31773003B93CA /* HeliosAppViewController.m */,
+				D518B24713F31773003B93CA /* HeliosViewController.h */,
+				D518B24813F31773003B93CA /* HeliosViewController.m */,
 				D5FD74AE140817B500412322 /* projects.plist */,
 				D58F613013F5A35A0081CE9C /* GridViewController.h */,
 				D58F613113F5A35A0081CE9C /* GridViewController.m */,
@@ -445,6 +459,10 @@
 		D546293714030832006CCE9E /* projectsNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				D50E518E140DB1200053B345 /* navExpo.png */,
+				D50E518F140DB1200053B345 /* navExpoH.png */,
+				D50E5190140DB1200053B345 /* navMini.png */,
+				D50E5191140DB1200053B345 /* navMiniH.png */,
 				D50E517C140D7A1D0053B345 /* navNavy.png */,
 				D50E517D140D7A1D0053B345 /* navNavyH.png */,
 				D50E517E140D7A1D0053B345 /* navSprint.png */,
@@ -469,7 +487,7 @@
 		D58F613513F5AD2F0081CE9C /* NIBs */ = {
 			isa = PBXGroup;
 			children = (
-				D518B24A13F31773003B93CA /* HeliosAppViewController.xib */,
+				D518B24A13F31773003B93CA /* HeliosViewController.xib */,
 				D518B24413F31773003B93CA /* MainWindow.xib */,
 				D58F613213F5A35A0081CE9C /* GridViewController.xib */,
 				D52A64BB13FB1EE000A03E74 /* NickViewController.xib */,
@@ -492,6 +510,9 @@
 		D5F5BD6513FDB67100AED5AF /* ScrollView - Projects */ = {
 			isa = PBXGroup;
 			children = (
+				D50E5196140DB2E60053B345 /* project10.png */,
+				D50E5188140DAC4E0053B345 /* project8.png */,
+				D50E5189140DAC4E0053B345 /* project9.png */,
 				D5ADBC84140859370014D9ED /* projectNav.png */,
 				D5FD74BC14082B5500412322 /* project6.png */,
 				D5FD74BD14082B5500412322 /* project7.png */,
@@ -630,7 +651,7 @@
 			files = (
 				D518B23D13F31773003B93CA /* InfoPlist.strings in Resources */,
 				D518B24613F31773003B93CA /* MainWindow.xib in Resources */,
-				D518B24C13F31773003B93CA /* HeliosAppViewController.xib in Resources */,
+				D518B24C13F31773003B93CA /* HeliosViewController.xib in Resources */,
 				D518B26213F3178D003B93CA /* glass.png in Resources */,
 				D518B26913F317EF003B93CA /* icon-black.png in Resources */,
 				D518B26B13F31801003B93CA /* Default-Portrait~ipad.png in Resources */,
@@ -739,6 +760,13 @@
 				D50E5185140D7A1E0053B345 /* navSprintH.png in Resources */,
 				D50E5186140D7A1E0053B345 /* navVampire.png in Resources */,
 				D50E5187140D7A1E0053B345 /* navVampireH.png in Resources */,
+				D50E518B140DAC4F0053B345 /* project8.png in Resources */,
+				D50E518C140DAC4F0053B345 /* project9.png in Resources */,
+				D50E5192140DB1200053B345 /* navExpo.png in Resources */,
+				D50E5193140DB1200053B345 /* navExpoH.png in Resources */,
+				D50E5194140DB1200053B345 /* navMini.png in Resources */,
+				D50E5195140DB1200053B345 /* navMiniH.png in Resources */,
+				D50E5197140DB2E70053B345 /* project10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,8 +778,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D518B23F13F31773003B93CA /* main.m in Sources */,
-				D518B24313F31773003B93CA /* HeliosAppAppDelegate.m in Sources */,
-				D518B24913F31773003B93CA /* HeliosAppViewController.m in Sources */,
+				D518B24313F31773003B93CA /* HeliosAppDelegate.m in Sources */,
+				D518B24913F31773003B93CA /* HeliosViewController.m in Sources */,
 				D58F612E13F5A0C00081CE9C /* SwitchViewController.m in Sources */,
 				D58F613313F5A35A0081CE9C /* GridViewController.m in Sources */,
 				D52A64BC13FB1EE000A03E74 /* NickViewController.m in Sources */,
@@ -780,12 +808,12 @@
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
-		D518B24A13F31773003B93CA /* HeliosAppViewController.xib */ = {
+		D518B24A13F31773003B93CA /* HeliosViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D518B24B13F31773003B93CA /* en */,
 			);
-			name = HeliosAppViewController.xib;
+			name = HeliosViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

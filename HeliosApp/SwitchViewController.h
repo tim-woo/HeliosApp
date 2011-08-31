@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@class HeliosAppViewController;
+@class HeliosViewController;
 @class GridViewController;
 
 @interface SwitchViewController : UIViewController
 {
-    HeliosAppViewController *heliosAppViewController;
+    HeliosViewController *heliosAppViewController;
     GridViewController      *gridViewController;
     UISegmentedControl *segmentedControl;
     BOOL                      transitioning;
 }
 
-@property (retain, nonatomic) HeliosAppViewController *heliosAppViewController;
+@property (retain, nonatomic) HeliosViewController *heliosAppViewController;
 @property (retain, nonatomic) GridViewController *gridViewController;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 

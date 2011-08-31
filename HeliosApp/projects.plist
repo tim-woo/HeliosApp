@@ -5,6 +5,26 @@
 	<key>all</key>
 	<array>
 		<dict>
+			<key>label</key>
+			<string>Shanghai World Expo</string>
+			<key>navImage</key>
+			<string>navExpo.png</string>
+			<key>navHighlight</key>
+			<string>navExpoH.png</string>
+			<key>page</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>Virtual Mini</string>
+			<key>navImage</key>
+			<string>navMini.png</string>
+			<key>navHighlight</key>
+			<string>navMiniH.png</string>
+			<key>page</key>
+			<string>2</string>
+		</dict>
+		<dict>
 			<key>image</key>
 			<string>tile1.png</string>
 			<key>highlight</key>
@@ -16,7 +36,7 @@
 			<key>navHighlight</key>
 			<string>navIntelH.png</string>
 			<key>page</key>
-			<string>1</string>
+			<string>3</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -30,7 +50,7 @@
 			<key>navHighlight</key>
 			<string>navMercH.png</string>
 			<key>page</key>
-			<string>2</string>
+			<string>4</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -44,7 +64,7 @@
 			<key>navHighlight</key>
 			<string>navYahooH.png</string>
 			<key>page</key>
-			<string>3</string>
+			<string>5</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -58,7 +78,7 @@
 			<key>navHighlight</key>
 			<string>navCoralineH.png</string>
 			<key>page</key>
-			<string>4</string>
+			<string>6</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -72,7 +92,7 @@
 			<key>navHighlight</key>
 			<string>navVH1H.png</string>
 			<key>page</key>
-			<string>5</string>
+			<string>7</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -86,7 +106,7 @@
 			<key>navHighlight</key>
 			<string>navNavyH.png</string>
 			<key>page</key>
-			<string>6</string>
+			<string>8</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -100,7 +120,7 @@
 			<key>navHighlight</key>
 			<string>navSprintH.png</string>
 			<key>page</key>
-			<string>7</string>
+			<string>9</string>
 		</dict>
 		<dict>
 			<key>image</key>
@@ -114,7 +134,7 @@
 			<key>navHighlight</key>
 			<string>navVampireH.png</string>
 			<key>page</key>
-			<string>8</string>
+			<string>10</string>
 		</dict>
 	</array>
 	<key>ar</key>
@@ -236,6 +256,121 @@
 			<string>navCoralineH.png</string>
 			<key>page</key>
 			<string>4</string>
+		</dict>
+	</array>
+	<key>featured</key>
+	<array>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile1.png</string>
+			<key>featuredImageHighlight</key>
+			<string>tile1H.png</string>
+			<key>label</key>
+			<string>World Expo</string>
+			<key>navImage</key>
+			<string>navIntel.png</string>
+			<key>navHighlight</key>
+			<string>navIntelH.png</string>
+			<key>page</key>
+			<string>3</string>
+		</dict>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile2.png</string>
+			<key>featuredImageHighlight</key>
+			<string>tile2H.png</string>
+			<key>label</key>
+			<string>Mini</string>
+			<key>navImage</key>
+			<string>navMerc.png</string>
+			<key>navHighlight</key>
+			<string>navMercH.png</string>
+			<key>page</key>
+			<string>4</string>
+		</dict>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile3.png</string>
+			<key>featuredImageHighlight</key>
+			<string>tile3H.png</string>
+			<key>label</key>
+			<string>Nickelodeon</string>
+			<key>navImage</key>
+			<string>navYahoo.png</string>
+			<key>navHighlight</key>
+			<string>navYahooH.png</string>
+			<key>page</key>
+			<string>5</string>
+		</dict>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile4.png</string>
+			<key>featuredImageHighlight</key>
+			<string>tile4H.png</string>
+			<key>label</key>
+			<string>Agilent</string>
+			<key>navImage</key>
+			<string>navCoraline.png</string>
+			<key>navHighlight</key>
+			<string>navCoralineH.png</string>
+			<key>page</key>
+			<string>6</string>
+		</dict>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile5.png</string>
+			<key>featuredImageHighlight</key>
+			<string>tile5H.png</string>
+			<key>label</key>
+			<string>SalesForce</string>
+			<key>navImage</key>
+			<string>navVH1.png</string>
+			<key>navHighlight</key>
+			<string>navVH1H.png</string>
+			<key>page</key>
+			<string>7</string>
+		</dict>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile4H.png</string>
+			<key>featuredImageHighlight</key>
+			<string>tile3.png</string>
+			<key>label</key>
+			<string>Disney</string>
+			<key>navImage</key>
+			<string>navNavy.png</string>
+			<key>navHighlight</key>
+			<string>navNavyH.png</string>
+			<key>page</key>
+			<string>8</string>
+		</dict>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile5.png</string>
+			<key>highlight</key>
+			<string>tile1H.png</string>
+			<key>label</key>
+			<string>Apple</string>
+			<key>navImage</key>
+			<string>navSprint.png</string>
+			<key>navHighlight</key>
+			<string>navSprintH.png</string>
+			<key>page</key>
+			<string>9</string>
+		</dict>
+		<dict>
+			<key>featuredImage</key>
+			<string>tile5.png</string>
+			<key>featuredImageHighlight</key>
+			<string>tile4.png</string>
+			<key>label</key>
+			<string>Google</string>
+			<key>navImage</key>
+			<string>navVampire.png</string>
+			<key>navHighlight</key>
+			<string>navVampireH.png</string>
+			<key>page</key>
+			<string>10</string>
 		</dict>
 	</array>
 </dict>
