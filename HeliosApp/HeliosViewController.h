@@ -18,7 +18,8 @@
 
 
 
-@interface HeliosViewController : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate, EasyTableViewDelegate>
+@interface HeliosViewController : UIViewController 
+<UIScrollViewDelegate, CLLocationManagerDelegate, EasyTableViewDelegate>
 {    
     CLLocationManager *locationManager;
     CLLocation        *startingPoint;
@@ -85,12 +86,12 @@
 @property (nonatomic, retain) NSArray *projectsAll;
 @property (nonatomic, retain) NSArray *projectsTouch;
 @property (nonatomic, retain) NSArray *projectsAR;
-@property (nonatomic, retain) NSArray *projectsTracking;
+@property (nonatomic, retain) NSArray *projectsGesture;
 
 @property (nonatomic, retain) UIButton *buttonAll;
 @property (nonatomic, retain) UIButton *buttonTouch;
 @property (nonatomic, retain) UIButton *buttonAR;
-@property (nonatomic, retain) UIButton *buttonTracking;
+@property (nonatomic, retain) UIButton *buttonGesture;
 
 
 

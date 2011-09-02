@@ -213,7 +213,7 @@
 			<string>2</string>
 		</dict>
 	</array>
-	<key>tracking</key>
+	<key>gesture</key>
 	<array>
 		<dict>
 			<key>image</key>

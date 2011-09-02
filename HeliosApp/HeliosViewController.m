@@ -8,6 +8,7 @@
 
 #import "HeliosViewController.h"
 #import "MapViewAnnotation.h"
+#import "MWPhotoBrowser.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -106,7 +107,7 @@ static NSUInteger pageControlOffsetTop = 820;
 
 @synthesize segmentedControl, parentScrollView, childScrollViewOne, childScrollViewTwo, childScrollViewThree, childScrollViewFour,
             pageControlOne,pageControlTwo, pageControlThree, imageViewsAbout, imageViewsTech, imageViewsProjects, imageViewsContact,
-            home1,home2,home3, locationManager,startingPoint,arrow1,arrow2,arrow3, horizontalView, projectNavView, verticalView1,verticalView2,verticalView3,verticalView4,projectsFeatured, projectsAR,projectsAll,projectsTouch,projectsTracking, buttonAR, buttonTracking, buttonAll, buttonTouch;
+            home1,home2,home3, locationManager,startingPoint,arrow1,arrow2,arrow3, horizontalView, projectNavView, verticalView1,verticalView2,verticalView3,verticalView4,projectsFeatured, projectsAR,projectsAll,projectsTouch,projectsGesture, buttonAR, buttonGesture, buttonAll, buttonTouch;
 
 #pragma mark -
 #pragma mark Private Methods
@@ -321,16 +322,16 @@ static NSUInteger pageControlOffsetTop = 820;
     [projectNavView addSubview:buttonAR];
     [buttonARTemp release];
     
-    UIButton *buttonTrack = [[UIButton alloc] initWithFrame:CGRectMake(530, 50, 160, 35)];
-    [buttonTrack setImage:[UIImage imageNamed:@"buttonTracking.png"] forState:UIControlStateNormal];
-    [buttonTrack setImage:[UIImage imageNamed:@"buttonTrackingH.png"] forState:UIControlStateHighlighted];
-    [buttonTrack setImage:[UIImage imageNamed:@"buttonTrackingH.png"] forState:UIControlStateDisabled];
+    UIButton *buttonGest = [[UIButton alloc] initWithFrame:CGRectMake(530, 50, 160, 35)];
+    [buttonGest setImage:[UIImage imageNamed:@"buttonGesture.png"] forState:UIControlStateNormal];
+    [buttonGest setImage:[UIImage imageNamed:@"buttonGestureH.png"] forState:UIControlStateHighlighted];
+    [buttonGest setImage:[UIImage imageNamed:@"buttonGestureH.png"] forState:UIControlStateDisabled];
 
-    [buttonTrack addTarget:self action:@selector(switchVerticalView:) forControlEvents:UIControlEventTouchUpInside];
-    buttonTrack.tag = 11114;
-    self.buttonTracking = buttonTrack;
-    [projectNavView addSubview:buttonTracking];
-    [buttonTrack release];
+    [buttonGest addTarget:self action:@selector(switchVerticalView:) forControlEvents:UIControlEventTouchUpInside];
+    buttonGest.tag = 11114;
+    self.buttonGesture = buttonGest;
+    [projectNavView addSubview:buttonGesture];
+    [buttonGest release];
     
     [self setupVerticalView];
     
@@ -350,7 +351,7 @@ static NSUInteger pageControlOffsetTop = 820;
     buttonAll.enabled = YES;
     buttonAR.enabled = YES;
     buttonTouch.enabled = YES;
-    buttonTracking.enabled = YES;
+    buttonGesture.enabled = YES;
     
     verticalView1.hidden = YES;
     verticalView2.hidden = YES;
@@ -375,7 +376,7 @@ static NSUInteger pageControlOffsetTop = 820;
     else
     {
         verticalView4.hidden = NO;
-        buttonTracking.enabled = NO;
+        buttonGesture.enabled = NO;
     }
 }
 
@@ -506,7 +507,7 @@ static NSUInteger pageControlOffsetTop = 820;
     int kNumberOfProjects = [self.projectsAll count];
     int kNumberOfProjectsTouch = [self.projectsTouch count];
     int kNumberOfProjectsAR = [self.projectsAR count];
-    int kNumberOfProjectsTracking = [self.projectsTracking count];
+    int kNumberOfProjectsGesture = [self.projectsGesture count];
     
     EasyTableView *table = [self initVerticalViewWithNumberProjects:kNumberOfProjects];
     self.verticalView1 = table;
@@ -526,7 +527,7 @@ static NSUInteger pageControlOffsetTop = 820;
 	[projectNavView addSubview:verticalView3];
     [table3 release];
     
-    EasyTableView *table4 = [self initVerticalViewWithNumberProjects:kNumberOfProjectsTracking];
+    EasyTableView *table4 = [self initVerticalViewWithNumberProjects:kNumberOfProjectsGesture];
     self.verticalView4 = table4;
     verticalView4.hidden = YES;
 	[projectNavView addSubview:verticalView4];
@@ -648,6 +649,15 @@ static NSUInteger pageControlOffsetTop = 820;
     playButton.tag = 50001;
     [childScrollViewThree addSubview:playButton];
     [playButton release];
+    
+    // Add photos button to project 1
+    UIButton *photoButton = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth+220, 570, 81, 81)];    
+    [photoButton setBackgroundImage:[UIImage imageNamed:@"buttonPlay.png"] forState:UIControlStateNormal];
+    [photoButton setImage:[UIImage imageNamed:@"buttonPlayH.png"] forState:UIControlStateHighlighted];
+    [photoButton addTarget:self action:@selector(photosPressed:) forControlEvents: UIControlEventTouchUpInside]; 
+    photoButton.tag = 6001;
+    [childScrollViewThree addSubview:photoButton];
+    [photoButton release];
     
     // Add play button to project 2
     UIButton *playButton2 = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth*2 +620, 370, 81, 81)];    
@@ -806,6 +816,31 @@ static NSUInteger pageControlOffsetTop = 820;
     [videoURL release];
 }
 
+- (void)photosPressed:(UIButton *)button {
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    
+    switch (button.tag) {
+        case 6001:
+            [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b.jpg"]]];
+			break;
+            break;
+            
+        default:
+            break;
+    }
+            
+    // Create browser
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:photos];
+    //[browser setInitialPageIndex:0]; // Can be changed if desired
+   // [self.navigationController pushViewController:browser animated:YES];
+    [self.view addSubview:browser.view];
+    [browser release];
+    [photos release];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -821,7 +856,7 @@ static NSUInteger pageControlOffsetTop = 820;
     self.projectsAll = [dict objectForKey:@"all"];
     self.projectsAR = [dict objectForKey:@"ar"];
     self.projectsTouch = [dict objectForKey:@"touch"];
-    self.projectsTracking = [dict objectForKey:@"tracking"];
+    self.projectsGesture = [dict objectForKey:@"gesture"];
     self.projectsFeatured = [dict objectForKey:@"featured"];
 
     kNumberOfPagesTabThree = [self.projectsAll count] + 1;     // total pages = #projects + intro page
@@ -872,10 +907,10 @@ static NSUInteger pageControlOffsetTop = 820;
     self.projectsAll = nil;
     self.projectsAR = nil;
     self.projectsTouch = nil;
-    self.projectsTracking = nil;
+    self.projectsGesture = nil;
     self.projectsFeatured = nil;
     
-    self.buttonTracking = nil;
+    self.buttonGesture = nil;
     self.buttonTouch = nil;
     self.buttonAR = nil;
     self.buttonAll = nil;
@@ -910,19 +945,20 @@ static NSUInteger pageControlOffsetTop = 820;
     [verticalView4 release];
     [projectsFeatured release];
     [projectsTouch release];
-    [projectsTracking release];
+    [projectsGesture release];
     [projectsAR release];
     [projectsAll release];
     [buttonAll release];
     [buttonAR release];
     [buttonTouch release];
-    [buttonTracking release];
+    [buttonGesture release];
     
     [super dealloc];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
+    //return YES;
     return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
@@ -1330,6 +1366,11 @@ static NSUInteger pageControlOffsetTop = 820;
         [scrollView sendSubviewToBack:anImageView];
         [anImageView release];
     }
+    
+    if (scrollView == childScrollViewThree)
+    {
+        
+    }
 }
 
 #pragma mark -
@@ -1426,7 +1467,7 @@ static NSUInteger pageControlOffsetTop = 820;
     }
     else // easytableview == verticalview4
     {
-        NSDictionary *navTracking = [self.projectsTracking objectAtIndex:index];
+        NSDictionary *navTracking = [self.projectsGesture objectAtIndex:index];
         UIButton *button = (UIButton *)view;
         
         [button setTitle:[navTracking objectForKey:@"page"] forState:UIControlStateNormal] ;
