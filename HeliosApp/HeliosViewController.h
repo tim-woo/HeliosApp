@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "EasyTableView.h"
+#import "MWPhotoBrowser.h"
 
 #define kSwitchesSegmentAbout      0
 #define kSwitchesSegmentTech       1
@@ -19,7 +20,7 @@
 
 
 @interface HeliosViewController : UIViewController 
-<UIScrollViewDelegate, CLLocationManagerDelegate, EasyTableViewDelegate>
+<UIScrollViewDelegate, CLLocationManagerDelegate, EasyTableViewDelegate, PhotoBrowserModalViewDelegate>
 {    
     CLLocationManager *locationManager;
     CLLocation        *startingPoint;

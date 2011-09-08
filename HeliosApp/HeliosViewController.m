@@ -8,7 +8,6 @@
 
 #import "HeliosViewController.h"
 #import "MapViewAnnotation.h"
-#import "MWPhotoBrowser.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -86,6 +85,7 @@ static NSUInteger pageControlOffsetTop = 820;
 - (void)goToMiniApp:(id)sender;
 - (void)getDirections:(id)sender;
 - (void)playPressed:(UIButton *)button;
+- (void)photosPressed:(UIButton *)button;
 - (void)setupHorizontalView;
 - (void)setupVerticalView;
 -(void)nextTransition:(id)sender;
@@ -260,32 +260,19 @@ static NSUInteger pageControlOffsetTop = 820;
     // Project Navigation on back
     // ------------------------------------------------
     
-    // View Project Nav Button
-    
-    UIButton *navButton = [[[UIButton alloc] initWithFrame:CGRectMake(286, 470, 163, 35)] autorelease];
-    [navButton setImage:[UIImage imageNamed:@"buttonNavigation.png"] forState:UIControlStateNormal];
-    [navButton setImage:[UIImage imageNamed:@"buttonNavH.png"] forState:UIControlStateHighlighted];
-    [navButton addTarget:self action:@selector(nextTransition:) forControlEvents:UIControlEventTouchUpInside];
-    [childScrollViewThree addSubview:navButton];
-    
     // --- Hidden project pages on the flip view
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(childScrollViewOffsetLeft, childScrollViewOffsetTop, childScrollViewWidth, childScrollViewHeight)];
     self.projectNavView = view;
     [view release];
-
-    /*
-    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"projectNav.png"]];
-    background.frame = CGRectMake(0, 0, childScrollViewWidth, childScrollViewHeight);
-    [projectNavView addSubview:background];
-    [background release];
-        */
     
     transitioning = NO;
     
     UIButton *navBack = [[UIButton alloc] initWithFrame:CGRectMake(15, 0, 60, 40)];
-    [navBack setImage:[UIImage imageNamed:@"buttonNavBack.png"] forState:UIControlStateNormal];
-    [navBack setImage:[UIImage imageNamed:@"buttonNavBackH.png"] forState:UIControlStateHighlighted];
+    [navBack setTitle:@"Back" forState:UIControlStateNormal];
+    [navBack setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    [navBack setTitleColor:[UIColor colorWithRed:89.0f/255.0f green:151.0f/255.0f blue:206.0f/255.0f alpha:1.0f] forState:UIControlStateHighlighted];
+    navBack.titleLabel.font = [UIFont systemFontOfSize:18.0];
     [navBack addTarget:self action:@selector(nextTransition:) forControlEvents:UIControlEventTouchUpInside];
     [projectNavView addSubview:navBack];
     [navBack release];
@@ -546,7 +533,7 @@ static NSUInteger pageControlOffsetTop = 820;
     [childScrollViewOne addSubview:arrow1];
     [arrowTemp release];
     
-    UIButton *arrowTemp2 = [[UIButton alloc] initWithFrame:CGRectMake(354, 520, 30, 20)];
+    UIButton *arrowTemp2 = [[UIButton alloc] initWithFrame:CGRectMake(354, 480, 30, 20)];
     [arrowTemp2 setImage:[UIImage imageNamed:@"buttonArrow.png"] forState:UIControlStateNormal];
     [arrowTemp2 setImage:[UIImage imageNamed:@"buttonArrowH.png"] forState:UIControlStateHighlighted];
     arrowTemp2.tag = 151;
@@ -563,99 +550,128 @@ static NSUInteger pageControlOffsetTop = 820;
     self.arrow3 = arrowTemp3;
     [childScrollViewThree addSubview:arrow3];
     [arrowTemp3 release];
-    /*
-     // button what we do
-     UIButton *button3 = [[[UIButton alloc] initWithFrame:CGRectMake(220, 690, 130, 40)] autorelease];
-     [button3 setImage:[UIImage imageNamed:@"button-WhatWeDo.png"] forState:UIControlStateNormal];
-     [button3 setImage:[UIImage imageNamed:@"buttonWhatWeDoHighlight"] forState:UIControlStateHighlighted];
-     button3.tag = 11;
-     [button3 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
-     [childScrollViewOne addSubview:button3];
-     
-     // button what we bring
-     UIButton *button4 = [[[UIButton alloc] initWithFrame:CGRectMake(410, 690, 130, 40)] autorelease];
-     [button4 setImage:[UIImage imageNamed:@"buttonWhatWeBring.png"] forState:UIControlStateNormal];
-     [button4 setImage:[UIImage imageNamed:@"buttonWhatWeBringHighlight.png"] forState:UIControlStateHighlighted];
-     button4.tag = 12;
-     [button4 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
-     [childScrollViewOne addSubview:button4];
-     
-     // button how it works
-     UIButton *button5 = [[[UIButton alloc] initWithFrame:CGRectMake(450, 690, 130, 40)] autorelease];
-     [button5 setImage:[UIImage imageNamed:@"buttonHowItWorks.png"] forState:UIControlStateNormal];
-     [button5 setImage:[UIImage imageNamed:@"buttonHowItWorksHighlight.png"] forState:UIControlStateHighlighted];
-     button5.tag = 13;
-     [button5 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
-     [childScrollViewOne addSubview:button5];
-     */
-    
+
     // button Touch
-    UIButton *button6 = [[UIButton alloc] initWithFrame:CGRectMake(140, 580, 130, 60)];
-    [button6 setImage:[UIImage imageNamed:@"buttonTouch.png"] forState:UIControlStateNormal];
-    [button6 setImage:[UIImage imageNamed:@"buttonTouchHighlight.png"] forState:UIControlStateHighlighted];
+    
+    UIImage *buttonImageNormal = [[UIImage imageNamed:@"buttonStretch.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"buttonStretchH.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+    UIImage *buttonImageDarkNormal = [[UIImage imageNamed:@"buttonStretchDark.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+    UIImage *buttonImageDarkHighlight = [[UIImage imageNamed:@"buttonStretchDarkH.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+    
+    UIButton *button6 = [[UIButton alloc] initWithFrame:CGRectMake(130, 580, 130, 35)];
+    [button6 setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [button6 setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [button6 setTitle:@"Touch" forState:UIControlStateNormal];
+    [button6 setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    button6.titleLabel.font = [UIFont systemFontOfSize:12.0];
     button6.tag = 21;
     [button6 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     [childScrollViewTwo addSubview:button6];
     [button6 release];
     
     // button 3D
-    UIButton *button7 = [[UIButton alloc] initWithFrame:CGRectMake(310, 580, 130, 60)];
-    [button7 setImage:[UIImage imageNamed:@"button3d.png"] forState:UIControlStateNormal];
-    [button7 setImage:[UIImage imageNamed:@"button3dHighlight.png"] forState:UIControlStateHighlighted];
+    UIButton *button7 = [[UIButton alloc] initWithFrame:CGRectMake(300, 580, 130, 35)];
+    [button7 setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [button7 setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [button7 setTitle:@"Gesture" forState:UIControlStateNormal];
+    [button7 setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    button7.titleLabel.font = [UIFont systemFontOfSize:12.0];
     button7.tag = 22;
     [button7 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     [childScrollViewTwo addSubview:button7];
     [button7 release];
     
     // button AR
-    UIButton *button8 = [[UIButton alloc] initWithFrame:CGRectMake(480, 580, 130, 60)];
-    [button8 setImage:[UIImage imageNamed:@"buttonAR.png"] forState:UIControlStateNormal];
-    [button8 setImage:[UIImage imageNamed:@"buttonARHighlight.png"] forState:UIControlStateHighlighted];
+    UIButton *button8 = [[UIButton alloc] initWithFrame:CGRectMake(470, 580, 130, 35)];
+    [button8 setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [button8 setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [button8 setTitle:@"Augmented Reality" forState:UIControlStateNormal];
+    [button8 setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    button8.titleLabel.font = [UIFont systemFontOfSize:12.0];    
     button8.tag = 23;
     [button8 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     [childScrollViewTwo addSubview:button8];
     [button8 release];
     
     // button Mobile
-    UIButton *button9 = [[UIButton alloc] initWithFrame:CGRectMake(310, 660, 130, 60)];
-    [button9 setImage:[UIImage imageNamed:@"buttonMobile.png"] forState:UIControlStateNormal];
-    [button9 setImage:[UIImage imageNamed:@"buttonMobileHighlight.png"] forState:UIControlStateHighlighted];
+    UIButton *button9 = [[UIButton alloc] initWithFrame:CGRectMake(210, 660, 130, 35)];
+    [button9 setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [button9 setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [button9 setTitle:@"Mobile" forState:UIControlStateNormal];
+    [button9 setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    button9.titleLabel.font = [UIFont systemFontOfSize:12.0];    
     button9.tag = 24;
     [button9 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     [childScrollViewTwo addSubview:button9];
     [button9 release];
     
+    // button Other
+    UIButton *button10 = [[UIButton alloc] initWithFrame:CGRectMake(390, 660, 130, 35)];
+    [button10 setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [button10 setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [button10 setTitle:@"Other" forState:UIControlStateNormal];
+    [button10 setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    button10.titleLabel.font = [UIFont systemFontOfSize:12.0];    
+    button10.tag = 25;
+    [button10 addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
+    [childScrollViewTwo addSubview:button10];
+    [button10 release];
+    
     // Go To Mini App Button
     UIButton *mini = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth*2+540, 85, 163, 35)];
-    [mini setImage:[UIImage imageNamed:@"buttonMini.png"] forState:UIControlStateNormal];
-    [mini setImage:[UIImage imageNamed:@"buttonMiniHighlight.png"] forState:UIControlStateHighlighted];
+    [mini setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [mini setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [mini setTitle:@"View in App Store" forState:UIControlStateNormal];
+    [mini setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    mini.titleLabel.font = [UIFont systemFontOfSize:12.0];    
     [mini addTarget:self action:@selector(goToMiniApp:) forControlEvents:UIControlEventTouchUpInside];
     [childScrollViewThree addSubview:mini];
     [mini release];
     
+    // View Project Nav Button
+    
+    UIButton *navButton = [[[UIButton alloc] initWithFrame:CGRectMake(286, 470, 163, 35)] autorelease];
+    [navButton setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [navButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [navButton setTitle:@"View Full Navigation" forState:UIControlStateNormal];
+    [navButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    navButton.titleLabel.font = [UIFont systemFontOfSize:12.0];    
+    [navButton addTarget:self action:@selector(nextTransition:) forControlEvents:UIControlEventTouchUpInside];
+    [childScrollViewThree addSubview:navButton];
+    
+    
     // Get Directions Button
-    UIButton *getDirectionsButton = [[UIButton alloc] initWithFrame:CGRectMake(310, 252, 126, 30)];
-    [getDirectionsButton setImage:[UIImage imageNamed:@"buttonDirections.png"] forState:UIControlStateNormal];
-    [getDirectionsButton setImage:[UIImage imageNamed:@"buttonDirectionsH.png"] forState:UIControlStateHighlighted];
+    UIButton *getDirectionsButton = [[UIButton alloc] initWithFrame:CGRectMake(310, 252, 126, 35)];
+    [getDirectionsButton setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    [getDirectionsButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [getDirectionsButton setTitle:@"Get Directions" forState:UIControlStateNormal];
+    [getDirectionsButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    getDirectionsButton.titleLabel.font = [UIFont systemFontOfSize:12.0];    
     [getDirectionsButton addTarget:self action:@selector(getDirections:) forControlEvents:UIControlEventTouchUpInside];
     [childScrollViewFour addSubview:getDirectionsButton];
     [getDirectionsButton release];
     
     // Add play button to project 1
-    UIButton *playButton = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth+220, 370, 81, 81)];    
-    [playButton setBackgroundImage:[UIImage imageNamed:@"buttonPlay.png"] forState:UIControlStateNormal];
-    [playButton setImage:[UIImage imageNamed:@"buttonPlayH.png"] forState:UIControlStateHighlighted];
+    UIButton *playButton = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth+170, 420, 125, 35)];    
+    [playButton setBackgroundImage:buttonImageDarkNormal forState:UIControlStateNormal];
+    [playButton setBackgroundImage:buttonImageDarkHighlight forState:UIControlStateHighlighted];
+    [playButton setTitle:@"View Video" forState:UIControlStateNormal];
+    [playButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    playButton.titleLabel.font = [UIFont systemFontOfSize:12.0];        
     [playButton addTarget:self action:@selector(playPressed:) forControlEvents: UIControlEventTouchUpInside]; 
     playButton.tag = 50001;
     [childScrollViewThree addSubview:playButton];
     [playButton release];
     
-    // Add photos button to project 1
-    UIButton *photoButton = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth+220, 570, 81, 81)];    
-    [photoButton setBackgroundImage:[UIImage imageNamed:@"buttonPlay.png"] forState:UIControlStateNormal];
-    [photoButton setImage:[UIImage imageNamed:@"buttonPlayH.png"] forState:UIControlStateHighlighted];
-    [photoButton addTarget:self action:@selector(photosPressed:) forControlEvents: UIControlEventTouchUpInside]; 
+    // View Photos button to project 1
+    UIButton *photoButton = [[UIButton alloc] initWithFrame:CGRectMake(childScrollViewWidth+40, 420, 125, 35)];    
+    [photoButton setBackgroundImage:buttonImageDarkNormal forState:UIControlStateNormal];
+    [photoButton setBackgroundImage:buttonImageDarkHighlight forState:UIControlStateHighlighted];
+    [photoButton setTitle:@"View Photos" forState:UIControlStateNormal];
+    [photoButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    photoButton.titleLabel.font = [UIFont systemFontOfSize:12.0];        
     photoButton.tag = 6001;
+    [photoButton addTarget:self action:@selector(photosPressed:) forControlEvents: UIControlEventTouchUpInside]; 
     [childScrollViewThree addSubview:photoButton];
     [photoButton release];
     
@@ -674,8 +690,10 @@ static NSUInteger pageControlOffsetTop = 820;
     // Add home buttons to the vertical scroll view
     
     UIButton *home1temp = [[UIButton alloc] initWithFrame:CGRectMake(640, 15, 130, 40)];
-    [home1temp setImage:[UIImage imageNamed:@"buttonHome.png"] forState:UIControlStateNormal];
-    [home1temp setImage:[UIImage imageNamed:@"buttonHomeHighlight"] forState:UIControlStateHighlighted];
+    [home1temp setTitle:@"Home" forState:UIControlStateNormal];
+    [home1temp setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    [home1temp setTitleColor:[UIColor colorWithRed:89.0f/255.0f green:151.0f/255.0f blue:206.0f/255.0f alpha:1.0f] forState:UIControlStateHighlighted];
+    home1temp.titleLabel.font = [UIFont systemFontOfSize:18.0]; 
     home1temp.tag = 997;
     [home1temp addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     self.home1 = home1temp;
@@ -683,8 +701,10 @@ static NSUInteger pageControlOffsetTop = 820;
     [home1temp release];
     
     UIButton *home2t = [[UIButton alloc] initWithFrame:CGRectMake(640, parentScrollHeight+15, 130, 40)];
-    [home2t setImage:[UIImage imageNamed:@"buttonHome.png"] forState:UIControlStateNormal];
-    [home2t setImage:[UIImage imageNamed:@"buttonHomeHighlight"] forState:UIControlStateHighlighted];
+    [home2t setTitle:@"Home" forState:UIControlStateNormal];
+    [home2t setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    [home2t setTitleColor:[UIColor colorWithRed:89.0f/255.0f green:151.0f/255.0f blue:206.0f/255.0f alpha:1.0f] forState:UIControlStateHighlighted];
+    home2t.titleLabel.font = [UIFont systemFontOfSize:18.0]; 
     home2t.tag = 998;
     [home2t addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     self.home2 = home2t;
@@ -692,8 +712,10 @@ static NSUInteger pageControlOffsetTop = 820;
     [home2t release];
     
     UIButton *home3t = [[UIButton alloc] initWithFrame:CGRectMake(640, parentScrollHeight*2+15, 130, 40)];
-    [home3t setImage:[UIImage imageNamed:@"buttonHome.png"] forState:UIControlStateNormal];
-    [home3t setImage:[UIImage imageNamed:@"buttonHomeHighlight"] forState:UIControlStateHighlighted];
+    [home3t setTitle:@"Home" forState:UIControlStateNormal];
+    [home3t setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:.7] forState:UIControlStateNormal];
+    [home3t setTitleColor:[UIColor colorWithRed:89.0f/255.0f green:151.0f/255.0f blue:206.0f/255.0f alpha:1.0f] forState:UIControlStateHighlighted];
+    home3t.titleLabel.font = [UIFont systemFontOfSize:18.0];     
     home3t.tag = 999;
     [home3t addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
     self.home3 = home3t;
@@ -817,6 +839,7 @@ static NSUInteger pageControlOffsetTop = 820;
 }
 
 - (void)photosPressed:(UIButton *)button {
+    
     NSMutableArray *photos = [[NSMutableArray alloc] init];
     
     switch (button.tag) {
@@ -825,18 +848,19 @@ static NSUInteger pageControlOffsetTop = 820;
 			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b.jpg"]]];
 			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f.jpg"]]];
 			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b.jpg"]]];
-			break;
-            break;
-            
+			break;            
         default:
             break;
     }
-            
+        
     // Create browser
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:photos];
-    //[browser setInitialPageIndex:0]; // Can be changed if desired
-   // [self.navigationController pushViewController:browser animated:YES];
-    [self.view addSubview:browser.view];
+    [browser setDelegate:self];
+    [browser setInitialPageIndex:0]; // Can be changed if desired
+   
+    browser.modalPresentationStyle = UIModalPresentationFormSheet;
+    browser.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:browser animated:YES];
     [browser release];
     [photos release];
 }
@@ -848,8 +872,7 @@ static NSUInteger pageControlOffsetTop = 820;
 }
 
 - (void)viewDidLoad { 
-    
-    // create the dictionary of projects
+       // create the dictionary of projects
     NSString *path = [[NSBundle mainBundle] pathForResource:@"projects" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
     //self.projects = [dict objectForKey:@"projects"];
@@ -1418,6 +1441,8 @@ static NSUInteger pageControlOffsetTop = 820;
         NSDictionary *navFeatured = [self.projectsFeatured objectAtIndex:index];
         
         UIButton *button = (UIButton *)view;
+
+        // sets title to the page number, will be used for scrolltopage:
         [button setTitle:[navFeatured objectForKey:@"page"] forState:UIControlStateNormal] ;
         [button setImage:[UIImage imageNamed:[navFeatured objectForKey:@"featuredImage"]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:[navFeatured objectForKey:@"featuredImageHighlight"]] forState:UIControlStateHighlighted];
@@ -1429,6 +1454,7 @@ static NSUInteger pageControlOffsetTop = 820;
         NSDictionary *navAll = [self.projectsAll objectAtIndex:index];
         UIButton *button = (UIButton *)view;
         
+        // sets title to the page number, will be used for scrolltopage:
         [button setTitle:[navAll objectForKey:@"page"] forState:UIControlStateNormal] ;
         [button setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
 
@@ -1467,19 +1493,27 @@ static NSUInteger pageControlOffsetTop = 820;
     }
     else // easytableview == verticalview4
     {
-        NSDictionary *navTracking = [self.projectsGesture objectAtIndex:index];
+        NSDictionary *navGesture = [self.projectsGesture objectAtIndex:index];
         UIButton *button = (UIButton *)view;
         
-        [button setTitle:[navTracking objectForKey:@"page"] forState:UIControlStateNormal] ;
+        [button setTitle:[navGesture objectForKey:@"page"] forState:UIControlStateNormal] ;
         [button setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
 
-        [button setImage:[UIImage imageNamed:[navTracking objectForKey:@"navImage"]] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:[navTracking objectForKey:@"navHighlight"]] forState:UIControlStateHighlighted];
+        [button setImage:[UIImage imageNamed:[navGesture objectForKey:@"navImage"]] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:[navGesture objectForKey:@"navHighlight"]] forState:UIControlStateHighlighted];
 
         [button addTarget:self action:@selector(scrollToPage:) forControlEvents:UIControlEventTouchUpInside];
 
     }
 }
 
+#pragma -
+#pragma mark Modal View Controller Delegate function
+- (void)didDismissModalView {
+    NSLog(@"in did dismiss view"); 
+    // Dismiss the modal view controller
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
 
 @end

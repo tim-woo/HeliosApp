@@ -11,6 +11,12 @@
 
 @class ZoomingScrollView;
 
+@protocol PhotoBrowserModalViewDelegate <NSObject>
+
+- (void)didDismissModalView;
+
+@end
+
 @interface MWPhotoBrowser : UIViewController <UIScrollViewDelegate, MWPhotoDelegate> {
 	
 	// Photos
@@ -27,13 +33,16 @@
 	// Navigation & controls
 	UIToolbar *toolbar;
 	NSTimer *controlVisibilityTimer;
-	UIBarButtonItem *previousButton, *nextButton;
+	UIBarButtonItem *previousButton, *nextButton, *doneButton;
 
     // Misc
 	BOOL performingLayout;
 	BOOL rotating;
 	
+    id<PhotoBrowserModalViewDelegate> delegate;
 }
+@property (nonatomic, assign) id<PhotoBrowserModalViewDelegate> delegate;
+
 
 // Init
 - (id)initWithPhotos:(NSArray *)photosArray;
@@ -57,20 +66,20 @@
 - (CGRect)frameForPageAtIndex:(NSUInteger)index;
 - (CGSize)contentSizeForPagingScrollView;
 - (CGPoint)contentOffsetForPageAtIndex:(NSUInteger)index;
-- (CGRect)frameForNavigationBarAtOrientation:(UIInterfaceOrientation)orientation;
+//- (CGRect)frameForNavigationBarAtOrientation:(UIInterfaceOrientation)orientation;
 - (CGRect)frameForToolbarAtOrientation:(UIInterfaceOrientation)orientation;
 
 // Navigation
-- (void)updateNavigation;
+//- (void)updateNavigation;
 - (void)jumpToPageAtIndex:(NSUInteger)index;
 - (void)gotoPreviousPage;
 - (void)gotoNextPage;
 
 // Controls
-- (void)cancelControlHiding;
-- (void)hideControlsAfterDelay;
-- (void)setControlsHidden:(BOOL)hidden;
-- (void)toggleControls;
+//- (void)cancelControlHiding;
+//- (void)hideControlsAfterDelay;
+//- (void)setControlsHidden:(BOOL)hidden;
+//- (void)toggleControls;
 
 // Properties
 - (void)setInitialPageIndex:(NSUInteger)index;

@@ -18,7 +18,7 @@
 
 // MWPhotoBrowser
 @implementation MWPhotoBrowser
-
+@synthesize delegate;
 - (id)initWithPhotos:(NSArray *)photosArray {
 	if ((self = [super init])) {
 		
@@ -31,7 +31,6 @@
 		currentPageIndex = 0;
 		performingLayout = NO;
 		rotating = NO;
-		
 	}
 	return self;
 }
@@ -62,6 +61,7 @@
     [toolbar release], toolbar = nil;
     [previousButton release], previousButton = nil;
     [nextButton release], nextButton = nil;
+    [doneButton release], doneButton = nil;
 }
 
 - (void)dealloc {
@@ -72,6 +72,7 @@
 	[toolbar release];
 	[previousButton release];
 	[nextButton release];
+    [doneButton release];
     [super dealloc];
 }
 
@@ -80,7 +81,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	
+ 
 	// View
 	self.view.backgroundColor = [UIColor blackColor];
 	
@@ -95,43 +96,49 @@
 	pagingScrollView.backgroundColor = [UIColor blackColor];
     pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
 	pagingScrollView.contentOffset = [self contentOffsetForPageAtIndex:currentPageIndex];
-	[self.view addSubview:pagingScrollView];
+	
+    [self.view addSubview:pagingScrollView];
 	
 	// Setup pages
 	visiblePages = [[NSMutableSet alloc] init];
 	recycledPages = [[NSMutableSet alloc] init];
 	[self tilePages];
     
+    
     // Navigation bar
+    /*
     self.navigationController.navigationBar.tintColor = nil;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-	
-    // Only show toolbar if there's more that 1 photo
-    if (photos.count > 1) {
+	*/
     
-        // Toolbar
-        toolbar = [[UIToolbar alloc] initWithFrame:[self frameForToolbarAtOrientation:self.interfaceOrientation]];
-        toolbar.tintColor = nil;
-        toolbar.barStyle = UIBarStyleBlackTranslucent;
-        toolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
-        [self.view addSubview:toolbar];
-        
-        // Toolbar Items
-        previousButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UIBarButtonItemArrowLeft.png"] style:UIBarButtonItemStylePlain target:self action:@selector(gotoPreviousPage)];
-        nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UIBarButtonItemArrowRight.png"] style:UIBarButtonItemStylePlain target:self action:@selector(gotoNextPage)];
-        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        NSMutableArray *items = [[NSMutableArray alloc] init];
-        [items addObject:space];
-        if (photos.count > 1) [items addObject:previousButton];
-        [items addObject:space];
-        if (photos.count > 1) [items addObject:nextButton];
-        [items addObject:space];
-        [toolbar setItems:items];
-        [items release];
-        [space release];
-
+    // Toolbar
+    toolbar = [[UIToolbar alloc] initWithFrame:[self frameForToolbarAtOrientation:self.interfaceOrientation]];
+    toolbar.tintColor = nil;
+    toolbar.barStyle = UIBarStyleBlackTranslucent;
+    toolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:toolbar];
+    
+    // Toolbar Items
+    previousButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UIBarButtonItemArrowLeft.png"] style:UIBarButtonItemStylePlain target:self action:@selector(gotoPreviousPage)];
+    nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UIBarButtonItemArrowRight.png"] style:UIBarButtonItemStylePlain target:self action:@selector(gotoNextPage)];
+    //doneButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UIBarButtonItemArrowRight.png"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissView)];
+    doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissView)];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    [items addObject:space];
+    if (photos.count > 1) {
+        [items addObject:previousButton];
     }
-        
+    [items addObject:space];
+    if (photos.count > 1) {
+       [items addObject:nextButton]; 
+    }
+    [items addObject:space];
+    [items addObject:doneButton];
+    [toolbar setItems:items];
+    [items release];
+    [space release];
+    
 	// Super
     [super viewDidLoad];
 	
@@ -146,12 +153,12 @@
 	[self performLayout];
     
     // Set status bar style to black translucent
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+	//[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
     	
 	// Navigation
-	[self updateNavigation];
-	[self hideControlsAfterDelay];
-	[self didStartViewingPageAtIndex:currentPageIndex]; // initial
+	//[self updateNavigation];
+	//[self hideControlsAfterDelay];
+	//[self didStartViewingPageAtIndex:currentPageIndex]; // initial
 	
 }
 
@@ -161,7 +168,7 @@
 	[super viewWillDisappear:animated];
 
 	// Cancel any hiding timers
-	[self cancelControlHiding];
+	//[self cancelControlHiding];
 	
 }
 
@@ -385,10 +392,12 @@
 	return CGPointMake(newOffset, 0);
 }
 
+/*
 - (CGRect)frameForNavigationBarAtOrientation:(UIInterfaceOrientation)orientation {
 	CGFloat height = UIInterfaceOrientationIsPortrait(orientation) ? 44 : 32;
 	return CGRectMake(0, 20, self.view.bounds.size.width, height);
 }
+*/
 
 - (CGRect)frameForToolbarAtOrientation:(UIInterfaceOrientation)orientation {
 	CGFloat height = UIInterfaceOrientationIsPortrait(orientation) ? 44 : 32;
@@ -420,17 +429,20 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	// Hide controls when dragging begins
-	[self setControlsHidden:YES];
+	// [self setControlsHidden:YES];
 }
 
+/*
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	// Update nav when page changes
 	[self updateNavigation];
 }
+ */
 
 #pragma mark -
 #pragma mark Navigation
 
+/*
 - (void)updateNavigation {
 
 	// Title
@@ -445,6 +457,7 @@
 	nextButton.enabled = (currentPageIndex < photos.count-1);
 	
 }
+*/
 
 - (void)jumpToPageAtIndex:(NSUInteger)index {
 	
@@ -452,24 +465,29 @@
 	if (index < photos.count) {
 		CGRect pageFrame = [self frameForPageAtIndex:index];
 		pagingScrollView.contentOffset = CGPointMake(pageFrame.origin.x - PADDING, 0);
-		[self updateNavigation];
+		//[self updateNavigation];
 	}
 	
 	// Update timer to give more time
-	[self hideControlsAfterDelay];
+	//[self hideControlsAfterDelay];
 	
 }
 
 - (void)gotoPreviousPage { [self jumpToPageAtIndex:currentPageIndex-1]; }
 - (void)gotoNextPage { [self jumpToPageAtIndex:currentPageIndex+1]; }
+- (void)dismissView {
+    [delegate didDismissModalView]; 
+}
 
+/*
 #pragma mark -
 #pragma mark Control Hiding / Showing
 
 - (void)setControlsHidden:(BOOL)hidden {
 	
 	// Get status bar height if visible
-	CGFloat statusBarHeight = 0;
+	
+    CGFloat statusBarHeight = 0;
 	if (![UIApplication sharedApplication].statusBarHidden) {
 		CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
 		statusBarHeight = MIN(statusBarFrame.size.height, statusBarFrame.size.width);
@@ -488,7 +506,9 @@
 		statusBarHeight = MIN(statusBarFrame.size.height, statusBarFrame.size.width);
 	}
 	
+    
 	// Set navigation bar frame
+    
 	CGRect navBarFrame = self.navigationController.navigationBar.frame;
 	navBarFrame.origin.y = statusBarHeight;
 	self.navigationController.navigationBar.frame = navBarFrame;
@@ -499,7 +519,7 @@
 	[self.navigationController.navigationBar setAlpha:hidden ? 0 : 1];
 	[toolbar setAlpha:hidden ? 0 : 1];
 	[UIView commitAnimations];
-	
+    
 	// Control hiding timer
 	// Will cancel existing timer but only begin hiding if
 	// they are visible
@@ -526,6 +546,8 @@
 
 - (void)hideControls { [self setControlsHidden:YES]; }
 - (void)toggleControls { [self setControlsHidden:![UIApplication sharedApplication].isStatusBarHidden]; }
+*/
+
 
 #pragma mark -
 #pragma mark Rotation
@@ -549,7 +571,7 @@
 	[self performLayout];
 	
 	// Delay control holding
-	[self hideControlsAfterDelay];
+	//[self hideControlsAfterDelay];
 	
 }
 

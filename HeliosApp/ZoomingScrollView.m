@@ -215,6 +215,7 @@
 	return photoImageView;
 }
 
+/*
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	[photoBrowser cancelControlHiding];
 }
@@ -226,12 +227,14 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	[photoBrowser hideControlsAfterDelay];
 }
+ */
+
 
 #pragma mark -
 #pragma mark Tap Detection
 
 - (void)handleSingleTap:(CGPoint)touchPoint {
-	[photoBrowser performSelector:@selector(toggleControls) withObject:nil afterDelay:0.2];
+	//[photoBrowser performSelector:@selector(toggleControls) withObject:nil afterDelay:0.2];
 }
 
 - (void)handleDoubleTap:(CGPoint)touchPoint {
@@ -253,7 +256,7 @@
 	}
 	
 	// Delay controls
-	[photoBrowser hideControlsAfterDelay];
+	//[photoBrowser hideControlsAfterDelay];
 	
 }
 

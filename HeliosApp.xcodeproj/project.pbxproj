@@ -39,14 +39,16 @@
 		D5A43A2514119A9400011314 /* UIBarButtonItemArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A43A2114119A9400011314 /* UIBarButtonItemArrowLeft@2x.png */; };
 		D5A43A2614119A9400011314 /* UIBarButtonItemArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A43A2214119A9400011314 /* UIBarButtonItemArrowRight.png */; };
 		D5A43A2714119A9400011314 /* UIBarButtonItemArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A43A2314119A9400011314 /* UIBarButtonItemArrowRight@2x.png */; };
+		D5BB81F314182ECB00DDBB15 /* buttonStretch.png in Resources */ = {isa = PBXBuildFile; fileRef = D5BB81F114182ECB00DDBB15 /* buttonStretch.png */; };
+		D5BB81F414182ECB00DDBB15 /* buttonStretchH.png in Resources */ = {isa = PBXBuildFile; fileRef = D5BB81F214182ECB00DDBB15 /* buttonStretchH.png */; };
+		D5BB81F81418434200DDBB15 /* buttonStretchDark.png in Resources */ = {isa = PBXBuildFile; fileRef = D5BB81F61418434100DDBB15 /* buttonStretchDark.png */; };
+		D5BB81F91418434200DDBB15 /* buttonStretchDarkH.png in Resources */ = {isa = PBXBuildFile; fileRef = D5BB81F71418434100DDBB15 /* buttonStretchDarkH.png */; };
 		D5DECBDE14100A5D002CBB9A /* Coraline_proj.mov in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBD814100A5D002CBB9A /* Coraline_proj.mov */; };
 		D5DECBE014100A5D002CBB9A /* Navy.mov in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBDA14100A5D002CBB9A /* Navy.mov */; };
 		D5DECBE114100A5D002CBB9A /* vampires.mov in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBDB14100A5D002CBB9A /* vampires.mov */; };
 		D5DECBE214100A5D002CBB9A /* VH1_proj.mov in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBDC14100A5D002CBB9A /* VH1_proj.mov */; };
 		D5DECBE314100A5D002CBB9A /* yahoo.mov in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBDD14100A5D002CBB9A /* yahoo.mov */; };
 		D5DECC52141028FD002CBB9A /* scrollview_pages.psd alias in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBE6141028F9002CBB9A /* scrollview_pages.psd alias */; };
-		D5DECC53141028FD002CBB9A /* buttonDirections.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBE9141028FA002CBB9A /* buttonDirections.png */; };
-		D5DECC54141028FD002CBB9A /* buttonDirectionsH.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBEA141028FA002CBB9A /* buttonDirectionsH.png */; };
 		D5DECC55141028FD002CBB9A /* contact0.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBEB141028FA002CBB9A /* contact0.png */; };
 		D5DECC56141028FD002CBB9A /* tile1.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBEE141028FC002CBB9A /* tile1.png */; };
 		D5DECC57141028FD002CBB9A /* tile1H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECBEF141028FC002CBB9A /* tile1H.png */; };
@@ -83,8 +85,6 @@
 		D5DECC77141028FD002CBB9A /* navVH1H.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC10141028FC002CBB9A /* navVH1H.png */; };
 		D5DECC78141028FD002CBB9A /* navYahoo.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC11141028FC002CBB9A /* navYahoo.png */; };
 		D5DECC79141028FD002CBB9A /* navYahooH.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC12141028FC002CBB9A /* navYahooH.png */; };
-		D5DECC7B141028FD002CBB9A /* buttonMini.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC15141028FC002CBB9A /* buttonMini.png */; };
-		D5DECC7C141028FD002CBB9A /* buttonMiniHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC16141028FC002CBB9A /* buttonMiniHighlight.png */; };
 		D5DECC7D141028FD002CBB9A /* buttonPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC17141028FC002CBB9A /* buttonPlay.png */; };
 		D5DECC7E141028FD002CBB9A /* buttonPlayH.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC18141028FC002CBB9A /* buttonPlayH.png */; };
 		D5DECC7F141028FD002CBB9A /* buttonAll.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC1A141028FC002CBB9A /* buttonAll.png */; };
@@ -118,20 +118,6 @@
 		D5DECCA0141028FD002CBB9A /* tech3.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC3F141028FD002CBB9A /* tech3.png */; };
 		D5DECCA1141028FD002CBB9A /* tech4.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC40141028FD002CBB9A /* tech4.png */; };
 		D5DECCA2141028FD002CBB9A /* tech5.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC41141028FD002CBB9A /* tech5.png */; };
-		D5DECCA4141028FD002CBB9A /* button3d.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC44141028FD002CBB9A /* button3d.png */; };
-		D5DECCA5141028FD002CBB9A /* button3dHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC45141028FD002CBB9A /* button3dHighlight.png */; };
-		D5DECCA6141028FD002CBB9A /* buttonAR.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC46141028FD002CBB9A /* buttonAR.png */; };
-		D5DECCA7141028FD002CBB9A /* buttonARHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC47141028FD002CBB9A /* buttonARHighlight.png */; };
-		D5DECCA8141028FD002CBB9A /* buttonHowItWorks.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC48141028FD002CBB9A /* buttonHowItWorks.png */; };
-		D5DECCA9141028FD002CBB9A /* buttonHowItWorksHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC49141028FD002CBB9A /* buttonHowItWorksHighlight.png */; };
-		D5DECCAA141028FD002CBB9A /* buttonMobile.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC4A141028FD002CBB9A /* buttonMobile.png */; };
-		D5DECCAB141028FD002CBB9A /* buttonMobileHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC4B141028FD002CBB9A /* buttonMobileHighlight.png */; };
-		D5DECCAC141028FD002CBB9A /* buttonTouch.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC4C141028FD002CBB9A /* buttonTouch.png */; };
-		D5DECCAD141028FD002CBB9A /* buttonTouchHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC4D141028FD002CBB9A /* buttonTouchHighlight.png */; };
-		D5DECCAE141028FD002CBB9A /* buttonWhatWeBring.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC4E141028FD002CBB9A /* buttonWhatWeBring.png */; };
-		D5DECCAF141028FD002CBB9A /* buttonWhatWeBringHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC4F141028FD002CBB9A /* buttonWhatWeBringHighlight.png */; };
-		D5DECCB0141028FD002CBB9A /* buttonWhatWeDo.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC50141028FD002CBB9A /* buttonWhatWeDo.png */; };
-		D5DECCB1141028FD002CBB9A /* buttonWhatWeDoHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECC51141028FD002CBB9A /* buttonWhatWeDoHighlight.png */; };
 		D5DECCB614102947002CBB9A /* about0.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECCB314102947002CBB9A /* about0.png */; };
 		D5DECCB714102947002CBB9A /* about1.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECCB414102947002CBB9A /* about1.png */; };
 		D5DECCB814102947002CBB9A /* about2.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DECCB514102947002CBB9A /* about2.png */; };
@@ -191,14 +177,16 @@
 		D5A43A2114119A9400011314 /* UIBarButtonItemArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIBarButtonItemArrowLeft@2x.png"; sourceTree = "<group>"; };
 		D5A43A2214119A9400011314 /* UIBarButtonItemArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonItemArrowRight.png; sourceTree = "<group>"; };
 		D5A43A2314119A9400011314 /* UIBarButtonItemArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIBarButtonItemArrowRight@2x.png"; sourceTree = "<group>"; };
+		D5BB81F114182ECB00DDBB15 /* buttonStretch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonStretch.png; path = "../../../Desktop/HELIOS/iPad Application/General Buttons/buttonStretch.png"; sourceTree = "<group>"; };
+		D5BB81F214182ECB00DDBB15 /* buttonStretchH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonStretchH.png; path = "../../../Desktop/HELIOS/iPad Application/General Buttons/buttonStretchH.png"; sourceTree = "<group>"; };
+		D5BB81F61418434100DDBB15 /* buttonStretchDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonStretchDark.png; path = "../../../Desktop/HELIOS/iPad Application/General Buttons/buttonStretchDark.png"; sourceTree = "<group>"; };
+		D5BB81F71418434100DDBB15 /* buttonStretchDarkH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonStretchDarkH.png; path = "../../../Desktop/HELIOS/iPad Application/General Buttons/buttonStretchDarkH.png"; sourceTree = "<group>"; };
 		D5DECBD814100A5D002CBB9A /* Coraline_proj.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = Coraline_proj.mov; path = ../../../Desktop/InWindow/Coraline_proj.mov; sourceTree = "<group>"; };
 		D5DECBDA14100A5D002CBB9A /* Navy.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = Navy.mov; path = ../../../Desktop/InWindow/Navy.mov; sourceTree = "<group>"; };
 		D5DECBDB14100A5D002CBB9A /* vampires.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = vampires.mov; path = ../../../Desktop/InWindow/vampires.mov; sourceTree = "<group>"; };
 		D5DECBDC14100A5D002CBB9A /* VH1_proj.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = VH1_proj.mov; path = ../../../Desktop/InWindow/VH1_proj.mov; sourceTree = "<group>"; };
 		D5DECBDD14100A5D002CBB9A /* yahoo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = yahoo.mov; path = ../../../Desktop/InWindow/yahoo.mov; sourceTree = "<group>"; };
 		D5DECBE6141028F9002CBB9A /* scrollview_pages.psd alias */ = {isa = PBXFileReference; lastKnownFileType = file; path = "scrollview_pages.psd alias"; sourceTree = "<group>"; };
-		D5DECBE9141028FA002CBB9A /* buttonDirections.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonDirections.png; sourceTree = "<group>"; };
-		D5DECBEA141028FA002CBB9A /* buttonDirectionsH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonDirectionsH.png; sourceTree = "<group>"; };
 		D5DECBEB141028FA002CBB9A /* contact0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact0.png; sourceTree = "<group>"; };
 		D5DECBEE141028FC002CBB9A /* tile1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile1.png; sourceTree = "<group>"; };
 		D5DECBEF141028FC002CBB9A /* tile1H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile1H.png; sourceTree = "<group>"; };
@@ -235,8 +223,6 @@
 		D5DECC10141028FC002CBB9A /* navVH1H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navVH1H.png; sourceTree = "<group>"; };
 		D5DECC11141028FC002CBB9A /* navYahoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navYahoo.png; sourceTree = "<group>"; };
 		D5DECC12141028FC002CBB9A /* navYahooH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navYahooH.png; sourceTree = "<group>"; };
-		D5DECC15141028FC002CBB9A /* buttonMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonMini.png; sourceTree = "<group>"; };
-		D5DECC16141028FC002CBB9A /* buttonMiniHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonMiniHighlight.png; sourceTree = "<group>"; };
 		D5DECC17141028FC002CBB9A /* buttonPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonPlay.png; sourceTree = "<group>"; };
 		D5DECC18141028FC002CBB9A /* buttonPlayH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonPlayH.png; sourceTree = "<group>"; };
 		D5DECC1A141028FC002CBB9A /* buttonAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonAll.png; sourceTree = "<group>"; };
@@ -270,20 +256,6 @@
 		D5DECC3F141028FD002CBB9A /* tech3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tech3.png; sourceTree = "<group>"; };
 		D5DECC40141028FD002CBB9A /* tech4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tech4.png; sourceTree = "<group>"; };
 		D5DECC41141028FD002CBB9A /* tech5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tech5.png; sourceTree = "<group>"; };
-		D5DECC44141028FD002CBB9A /* button3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3d.png; sourceTree = "<group>"; };
-		D5DECC45141028FD002CBB9A /* button3dHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3dHighlight.png; sourceTree = "<group>"; };
-		D5DECC46141028FD002CBB9A /* buttonAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonAR.png; sourceTree = "<group>"; };
-		D5DECC47141028FD002CBB9A /* buttonARHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonARHighlight.png; sourceTree = "<group>"; };
-		D5DECC48141028FD002CBB9A /* buttonHowItWorks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHowItWorks.png; sourceTree = "<group>"; };
-		D5DECC49141028FD002CBB9A /* buttonHowItWorksHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHowItWorksHighlight.png; sourceTree = "<group>"; };
-		D5DECC4A141028FD002CBB9A /* buttonMobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonMobile.png; sourceTree = "<group>"; };
-		D5DECC4B141028FD002CBB9A /* buttonMobileHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonMobileHighlight.png; sourceTree = "<group>"; };
-		D5DECC4C141028FD002CBB9A /* buttonTouch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonTouch.png; sourceTree = "<group>"; };
-		D5DECC4D141028FD002CBB9A /* buttonTouchHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonTouchHighlight.png; sourceTree = "<group>"; };
-		D5DECC4E141028FD002CBB9A /* buttonWhatWeBring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonWhatWeBring.png; sourceTree = "<group>"; };
-		D5DECC4F141028FD002CBB9A /* buttonWhatWeBringHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonWhatWeBringHighlight.png; sourceTree = "<group>"; };
-		D5DECC50141028FD002CBB9A /* buttonWhatWeDo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonWhatWeDo.png; sourceTree = "<group>"; };
-		D5DECC51141028FD002CBB9A /* buttonWhatWeDoHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonWhatWeDoHighlight.png; sourceTree = "<group>"; };
 		D5DECCB314102947002CBB9A /* about0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about0.png; sourceTree = "<group>"; };
 		D5DECCB414102947002CBB9A /* about1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about1.png; sourceTree = "<group>"; };
 		D5DECCB514102947002CBB9A /* about2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about2.png; sourceTree = "<group>"; };
@@ -377,6 +349,10 @@
 		D518B23913F31773003B93CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D5BB81F61418434100DDBB15 /* buttonStretchDark.png */,
+				D5BB81F71418434100DDBB15 /* buttonStretchDarkH.png */,
+				D5BB81F114182ECB00DDBB15 /* buttonStretch.png */,
+				D5BB81F214182ECB00DDBB15 /* buttonStretchH.png */,
 				D5A43A2014119A9400011314 /* UIBarButtonItemArrowLeft.png */,
 				D5A43A2114119A9400011314 /* UIBarButtonItemArrowLeft@2x.png */,
 				D5A43A2214119A9400011314 /* UIBarButtonItemArrowRight.png */,
@@ -454,20 +430,10 @@
 		D5DECBE7141028F9002CBB9A /* Add New Contact page */ = {
 			isa = PBXGroup;
 			children = (
-				D5DECBE8141028FA002CBB9A /* Contact Page Buttons */,
 				D5DECBEB141028FA002CBB9A /* contact0.png */,
 			);
 			name = "Add New Contact page";
 			path = "../../../Desktop/HELIOS/iPad Application/Add New Contact page";
-			sourceTree = "<group>";
-		};
-		D5DECBE8141028FA002CBB9A /* Contact Page Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				D5DECBE9141028FA002CBB9A /* buttonDirections.png */,
-				D5DECBEA141028FA002CBB9A /* buttonDirectionsH.png */,
-			);
-			path = "Contact Page Buttons";
 			sourceTree = "<group>";
 		};
 		D5DECBEC141028FA002CBB9A /* Add New Project Page */ = {
@@ -534,8 +500,6 @@
 		D5DECC14141028FC002CBB9A /* Project Page Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				D5DECC15141028FC002CBB9A /* buttonMini.png */,
-				D5DECC16141028FC002CBB9A /* buttonMiniHighlight.png */,
 				D5DECC17141028FC002CBB9A /* buttonPlay.png */,
 				D5DECC18141028FC002CBB9A /* buttonPlayH.png */,
 				D5DECC19141028FC002CBB9A /* Full Nav Buttons */,
@@ -587,7 +551,6 @@
 			isa = PBXGroup;
 			children = (
 				D5DECC3A141028FD002CBB9A /* ScrollView - Tech */,
-				D5DECC43141028FD002CBB9A /* Tech Page Jump Buttons */,
 			);
 			name = "Add New Tech Page";
 			path = "../../../Desktop/HELIOS/iPad Application/Add New Tech Page";
@@ -605,27 +568,6 @@
 				D5DECC41141028FD002CBB9A /* tech5.png */,
 			);
 			path = "ScrollView - Tech";
-			sourceTree = "<group>";
-		};
-		D5DECC43141028FD002CBB9A /* Tech Page Jump Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				D5DECC44141028FD002CBB9A /* button3d.png */,
-				D5DECC45141028FD002CBB9A /* button3dHighlight.png */,
-				D5DECC46141028FD002CBB9A /* buttonAR.png */,
-				D5DECC47141028FD002CBB9A /* buttonARHighlight.png */,
-				D5DECC48141028FD002CBB9A /* buttonHowItWorks.png */,
-				D5DECC49141028FD002CBB9A /* buttonHowItWorksHighlight.png */,
-				D5DECC4A141028FD002CBB9A /* buttonMobile.png */,
-				D5DECC4B141028FD002CBB9A /* buttonMobileHighlight.png */,
-				D5DECC4C141028FD002CBB9A /* buttonTouch.png */,
-				D5DECC4D141028FD002CBB9A /* buttonTouchHighlight.png */,
-				D5DECC4E141028FD002CBB9A /* buttonWhatWeBring.png */,
-				D5DECC4F141028FD002CBB9A /* buttonWhatWeBringHighlight.png */,
-				D5DECC50141028FD002CBB9A /* buttonWhatWeDo.png */,
-				D5DECC51141028FD002CBB9A /* buttonWhatWeDoHighlight.png */,
-			);
-			path = "Tech Page Jump Buttons";
 			sourceTree = "<group>";
 		};
 		D5DECCB214102947002CBB9A /* ScrollView - About */ = {
@@ -749,8 +691,6 @@
 				D5DECBE214100A5D002CBB9A /* VH1_proj.mov in Resources */,
 				D5DECBE314100A5D002CBB9A /* yahoo.mov in Resources */,
 				D5DECC52141028FD002CBB9A /* scrollview_pages.psd alias in Resources */,
-				D5DECC53141028FD002CBB9A /* buttonDirections.png in Resources */,
-				D5DECC54141028FD002CBB9A /* buttonDirectionsH.png in Resources */,
 				D5DECC55141028FD002CBB9A /* contact0.png in Resources */,
 				D5DECC56141028FD002CBB9A /* tile1.png in Resources */,
 				D5DECC57141028FD002CBB9A /* tile1H.png in Resources */,
@@ -787,8 +727,6 @@
 				D5DECC77141028FD002CBB9A /* navVH1H.png in Resources */,
 				D5DECC78141028FD002CBB9A /* navYahoo.png in Resources */,
 				D5DECC79141028FD002CBB9A /* navYahooH.png in Resources */,
-				D5DECC7B141028FD002CBB9A /* buttonMini.png in Resources */,
-				D5DECC7C141028FD002CBB9A /* buttonMiniHighlight.png in Resources */,
 				D5DECC7D141028FD002CBB9A /* buttonPlay.png in Resources */,
 				D5DECC7E141028FD002CBB9A /* buttonPlayH.png in Resources */,
 				D5DECC7F141028FD002CBB9A /* buttonAll.png in Resources */,
@@ -822,20 +760,6 @@
 				D5DECCA0141028FD002CBB9A /* tech3.png in Resources */,
 				D5DECCA1141028FD002CBB9A /* tech4.png in Resources */,
 				D5DECCA2141028FD002CBB9A /* tech5.png in Resources */,
-				D5DECCA4141028FD002CBB9A /* button3d.png in Resources */,
-				D5DECCA5141028FD002CBB9A /* button3dHighlight.png in Resources */,
-				D5DECCA6141028FD002CBB9A /* buttonAR.png in Resources */,
-				D5DECCA7141028FD002CBB9A /* buttonARHighlight.png in Resources */,
-				D5DECCA8141028FD002CBB9A /* buttonHowItWorks.png in Resources */,
-				D5DECCA9141028FD002CBB9A /* buttonHowItWorksHighlight.png in Resources */,
-				D5DECCAA141028FD002CBB9A /* buttonMobile.png in Resources */,
-				D5DECCAB141028FD002CBB9A /* buttonMobileHighlight.png in Resources */,
-				D5DECCAC141028FD002CBB9A /* buttonTouch.png in Resources */,
-				D5DECCAD141028FD002CBB9A /* buttonTouchHighlight.png in Resources */,
-				D5DECCAE141028FD002CBB9A /* buttonWhatWeBring.png in Resources */,
-				D5DECCAF141028FD002CBB9A /* buttonWhatWeBringHighlight.png in Resources */,
-				D5DECCB0141028FD002CBB9A /* buttonWhatWeDo.png in Resources */,
-				D5DECCB1141028FD002CBB9A /* buttonWhatWeDoHighlight.png in Resources */,
 				D5DECCB614102947002CBB9A /* about0.png in Resources */,
 				D5DECCB714102947002CBB9A /* about1.png in Resources */,
 				D5DECCB814102947002CBB9A /* about2.png in Resources */,
@@ -851,6 +775,10 @@
 				D5A43A2514119A9400011314 /* UIBarButtonItemArrowLeft@2x.png in Resources */,
 				D5A43A2614119A9400011314 /* UIBarButtonItemArrowRight.png in Resources */,
 				D5A43A2714119A9400011314 /* UIBarButtonItemArrowRight@2x.png in Resources */,
+				D5BB81F314182ECB00DDBB15 /* buttonStretch.png in Resources */,
+				D5BB81F414182ECB00DDBB15 /* buttonStretchH.png in Resources */,
+				D5BB81F81418434200DDBB15 /* buttonStretchDark.png in Resources */,
+				D5BB81F91418434200DDBB15 /* buttonStretchDarkH.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
